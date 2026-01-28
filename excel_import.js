@@ -196,6 +196,12 @@
     return prof;
   }
 
+  // Helper: Check if URL is restricted
+  function isRestrictedURL(url) {
+    if (!url) return true;
+    return /^(chrome|chrome-extension|edge|about|moz-extension):\/\//i.test(url);
+  }
+
   async function saveAndFill(profile) {
     await new Promise((resolve) => {
       try {
@@ -208,17 +214,69 @@
     });
     try {
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        // Check for query errors
+        if (chrome.runtime.lastError) {
+          console.warn("Excel import fill query error:", chrome.runtime.lastError.message);
+          return;
+        }
+
         (tabs || []).forEach((t) => {
+          if (!t?.id || isRestrictedURL(t.url)) {
+            return; // Skip restricted pages
+          }
           try {
             chrome.tabs.sendMessage(
               t.id,
               { action: "runFill", profile, force: true },
-              () => {}
+              (response) => {
+                // Check for runtime errors
+                if (chrome.runtime.lastError) {
+                  const errorMsg = chrome.runtime.lastError.message;
+                  // If content script doesn't exist, use background script to inject
+                  if (errorMsg.includes("Receiving end does not exist") || 
+                      errorMsg.includes("Could not establish connection")) {
+                    chrome.runtime.sendMessage(
+                      {
+                        action: "triggerFillOnActiveTab",
+                        profile,
+                        force: true,
+                      },
+                      () => {
+                        if (chrome.runtime.lastError) {
+                          console.warn("Excel import fill failed:", chrome.runtime.lastError.message);
+                        }
+                      }
+                    );
+                  } else {
+                    console.warn("Excel import fill error:", errorMsg);
+                  }
+                }
+              }
             );
-          } catch {}
+          } catch (err) {
+            // Fallback: use background script
+            try {
+              chrome.runtime.sendMessage(
+                {
+                  action: "triggerFillOnActiveTab",
+                  profile,
+                  force: true,
+                },
+                () => {
+                  if (chrome.runtime.lastError) {
+                    console.warn("Excel import fill failed:", chrome.runtime.lastError.message);
+                  }
+                }
+              );
+            } catch (fallbackErr) {
+              console.warn("Excel import fill error:", fallbackErr);
+            }
+          }
         });
       });
-    } catch {}
+    } catch (err) {
+      console.warn("Excel import fill query error:", err);
+    }
   }
 
   fileInput.addEventListener("change", async (e) => {

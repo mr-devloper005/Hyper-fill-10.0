@@ -1,7 +1,7 @@
 ﻿{
   "manifest_version": 3,
   "name": "HyperFill",
-  "version": "7.1.0",
+  "version": "10.0",
   "description": "Side-panel autofill with unified fill.js, Excel import, and deep debug logs.",
   "minimum_chrome_version": "114",
   "permissions": [
@@ -13,7 +13,11 @@
   ],
   "host_permissions": ["<all_urls>"],
   "background": { "service_worker": "background.js" },
-  "action": { "default_title": "HyperFill" },
+  "action": { "default_title": "HyperFill" ,
+  "default_icon": {
+    "128": "images/hyperfill.png"
+   
+  }},
   "side_panel": { "default_path": "panel.html" },
   "content_scripts": [
     {

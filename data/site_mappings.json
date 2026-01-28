@@ -1,0 +1,1712 @@
+{
+  "_comment": "HyperFill Site Mappings — Is site/page pe extension uske hisaab se fill karega. Naye sites add karne ke liye 'sites' array mein entry banao.",
+  "_profileKeys": "firstname, lastname, fullname, username, email, busEmail, email2, password, password2, phone, address, city, state, postcode, country, location, website, facebook, instagram, twitter, linkedin, youtube, title, company, category, subcategory, description",
+  "_urlPattern": "Hostname. e.g. 'speakerdeck.com' → us domain ke saare pages.",
+  "_pathPattern": "Optional. Same domain pe alag pages: urlPattern ek, pathPattern alag. Empty = pura site. Examples: '/signup' → sirf /signup; '/login' → sirf /login; '/account' → /account, /account/edit sab. Nested: '/account/settings' ko '/account' se pehle rakhna better.",
+  "_mappings": "Profile key → CSS selector. e.g. 'email': '#email' ya \"input[name='email']\"",
+  "_category": "Optional. Filter ke liye. Allowed: Article Submission, Web 2.0 Submission, Classifieds Submission, Image Submission, Video Submission, Social Bookmarking Submission, Document Sharing Submission, Local Listing Submission, Social Profile Submission.",
+  "_spamScore": "Optional. 0-10, jitna kam utna better. Filter ke liye use karo.",
+  "_formSelector": "Optional. Jab login+signup SAME URL pe hon: form ka CSS selector (e.g. #loginForm, .signup-form). Sirf us form ke andar fill. Do alag entries: ek formSelector #login, ek #signup.",
+  "_allMappingKeys": "Total 27 fields. Sirf jo form me hai wo add karo; baaki chhod sakte ho. firstname, lastname, fullname, username, email, busEmail, email2, password, password2, phone, address, city, state, postcode, country, location, website, facebook, instagram, twitter, linkedin, youtube, title, company, category, subcategory, description",
+  "_generateMapping": "Panel me 'Generate mapping from form HTML': form ka HTML paste karo, mapping auto banta hai. 300+ sites ke liye fast.",
+  "sites": [
+    {
+      "id": "500px-com-login-login",
+      "name": "500px.com — Login",
+      "urlPattern": "500px.com",
+      "pathPattern": "/login",
+      "category": "Image Submission",
+      "spamScore": 3.0,
+      "mappings": {
+        "email": "#emailOrUsername",
+        "password": "#password"
+      }
+    },
+    {
+      "id": "9gag-com-login",
+      "name": "9gag.com — Login",
+      "urlPattern": "9gag.com",
+      "pathPattern": "/",
+      "category": "Social Profile Submission",
+      "spamScore": 10.0,
+      "mappings": {
+        "email": "input[name=\"username\"]",
+        "password": "input[name=\"password\"]"
+      }
+    },
+    {
+      "id": "9gag-com-settings-profile-page",
+      "name": "9gag.com — Other",
+      "urlPattern": "9gag.com",
+      "pathPattern": "/settings/profile",
+      "category": "Social Profile Submission",
+      "spamScore": 10.0,
+      "mappings": {}
+    },
+    {
+      "id": "account-habr-com-ru-register-s5o6msybotlwqzfhglskozmmtqdludxbvsipp3twbvouxbdrack",
+      "name": "habr.com — Signup",
+      "urlPattern": "account.habr.com",
+      "pathPattern": "/ru/register/-s5o6msYbotlWQzfhgLsKoZmMtQdlUDxBvsiPP3twBvouXbDRACk4cWAPbmNA3WsSYm2zrC0vN8gt7pwpV1Drle6yds4MZVCs_lPAhu-lkf7dUA0igS3sJrIaKo36UBqEshZCvLjtTulE4Kr1upAwn5Tz4UszDApOorKkYIutBj79cThYeg0z3ePkR-6FrKcAceu9oOqtNyfHwKH",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "account-justlanded-com-en-login-login",
+      "name": "classifieds.justlanded.com — Login",
+      "urlPattern": "account.justlanded.com",
+      "pathPattern": "/en/login",
+      "category": "Classifieds Submission",
+      "spamScore": 1.0,
+      "mappings": {
+        "email": "#login_account_login",
+        "password": "#login_account_password"
+      }
+    },
+    {
+      "id": "account-komoot-com-signin-signup",
+      "name": "komoot.com — Signup",
+      "urlPattern": "account.komoot.com",
+      "pathPattern": "/signin",
+      "category": "Social Profile Submission",
+      "spamScore": 4.0,
+      "mappings": {
+        "username": "#display_name"
+      }
+    },
+    {
+      "id": "accounts-pixieset-com-login-login",
+      "name": "mypixieset.com — Login",
+      "urlPattern": "accounts.pixieset.com",
+      "pathPattern": "/login/",
+      "category": "Web 2.0 Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "admin-shopper-com-settings-page",
+      "name": "shopper.com — Other",
+      "urlPattern": "admin.shopper.com",
+      "pathPattern": "/settings",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "adpost-com-login-login",
+      "name": "adpost.com — Login",
+      "urlPattern": "adpost.com",
+      "pathPattern": "/login",
+      "category": "Classifieds Submission",
+      "spamScore": 4.0,
+      "mappings": {}
+    },
+    {
+      "id": "amsterdamsmartcity-com-profile-details-page",
+      "name": "bishopartsdistrict.com — Other",
+      "urlPattern": "amsterdamsmartcity.com",
+      "pathPattern": "/profile/details",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "animead-com-user-register-signup",
+      "name": "animead.com — Signup",
+      "urlPattern": "animead.com",
+      "pathPattern": "/user/register",
+      "category": "Local Listing Submission",
+      "spamScore": 4.0,
+      "mappings": {}
+    },
+    {
+      "id": "answers-com-u-gminternationalfreightforwarde-page",
+      "name": "answers.com — Other",
+      "urlPattern": "answers.com",
+      "pathPattern": "/u/gminternationalfreightforwarde",
+      "category": "Social Profile Submission",
+      "spamScore": 3.0,
+      "mappings": {}
+    },
+    {
+      "id": "app-clickup-com-signup-signup",
+      "name": "Signup",
+      "urlPattern": "app.clickup.com",
+      "pathPattern": "/signup",
+      "category": "Article Submission",
+      "spamScore": 5,
+      "mappings": {
+        "fullname": "#signup-form input[data-test='form__username-input']",
+        "email": "#signup-form #login-email-input",
+        "password": "#signup-form #password-input"
+      }
+    },
+    {
+      "id": "app-mapme-com-6f6e782f-560c-49d3-89f0-85cba32eb20c-story-dde021d3-f64d-4063-bef7",
+      "name": "mapme.com — Other",
+      "urlPattern": "app.mapme.com",
+      "pathPattern": "/6f6e782f-560c-49d3-89f0-85cba32eb20c/story/dde021d3-f64d-4063-bef7-1a55481dac51/info",
+      "category": "Local Listing Submission",
+      "spamScore": 6.0,
+      "mappings": {
+        "title": "#input-v-73",
+        "website": "#input-v-84"
+      }
+    },
+    {
+      "id": "app-mapme-com-sign-up-signup",
+      "name": "mapme.com — Signup",
+      "urlPattern": "app.mapme.com",
+      "pathPattern": "/sign-up",
+      "category": "Local Listing Submission",
+      "spamScore": 6.0,
+      "mappings": {
+        "username": "#input-v-17",
+        "password": "#input-v-20"
+      }
+    },
+    {
+      "id": "app-parler-com-login-login",
+      "name": "parler.com — Login",
+      "urlPattern": "app.parler.com",
+      "pathPattern": "/login",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "app-roll20-net-users-17552846-gm-i-page",
+      "name": "app.roll20.net — Other",
+      "urlPattern": "app.roll20.net",
+      "pathPattern": "/users/17552846/gm-i",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "app-samsungfood-com-login",
+      "name": "app.samsungfood.com — Login",
+      "urlPattern": "app.samsungfood.com",
+      "pathPattern": "/",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {
+        "email": "#_input-2",
+        "password": "input[name=\"password\"]"
+      }
+    },
+    {
+      "id": "app-shorthand-com-signin-login",
+      "name": "shorthand.com — Login",
+      "urlPattern": "app.shorthand.com",
+      "pathPattern": "/signin",
+      "category": "Article Submission",
+      "spamScore": 4.0,
+      "mappings": {
+        "username": "#form-identifier-5pVIia"
+      }
+    },
+    {
+      "id": "app-shorthand-com-signup-signup",
+      "name": "shorthand.com — Signup",
+      "urlPattern": "app.shorthand.com",
+      "pathPattern": "/signup",
+      "category": "Article Submission",
+      "spamScore": 4.0,
+      "mappings": {}
+    },
+    {
+      "id": "apsense-com-account-settings-page",
+      "name": "apsense.com — Other",
+      "urlPattern": "apsense.com",
+      "pathPattern": "/account/settings",
+      "category": "Local Listing Submission",
+      "spamScore": 10.0,
+      "mappings": {}
+    },
+    {
+      "id": "articlescad-login",
+      "name": "Articlescad — Login",
+      "urlPattern": "articlescad.com",
+      "pathPattern": "/login",
+      "category": "Article Submission",
+      "spamScore": 5,
+      "mappings": {
+        "email": "input[name='email']",
+        "password": "input[name='password']"
+      }
+    },
+    {
+      "id": "articlescad-signup",
+      "name": "Articlescad — Signup",
+      "urlPattern": "articlescad.com",
+      "pathPattern": "/signup",
+      "category": "Article Submission",
+      "spamScore": 5,
+      "mappings": {
+        "firstname": "input[name='firstname']",
+        "lastname": "input[name='lastname']",
+        "email": "input[name='email']",
+        "password": "input[name='password']",
+        "website": "input[name='url']"
+      }
+    },
+    {
+      "id": "atthehive-com-login-login",
+      "name": "atthehive.com — Login",
+      "urlPattern": "atthehive.com",
+      "pathPattern": "/login/",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "atthehive-com-register-signup",
+      "name": "atthehive.com — Signup",
+      "urlPattern": "atthehive.com",
+      "pathPattern": "/register/",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "auth-services-adobe-com-en-us-index-html-signup",
+      "name": "adobe.com — Signup",
+      "urlPattern": "auth.services.adobe.com",
+      "pathPattern": "/en_US/index.html",
+      "category": "Article Submission",
+      "spamScore": 5.0,
+      "mappings": {
+        "email": "#Signup-EmailField",
+        "password": [
+          "input[name=\"passwd\"]",
+          "#Signup-PasswordField"
+        ]
+      }
+    },
+    {
+      "id": "bcz-com-sign-login",
+      "name": "bcz.com — Login",
+      "urlPattern": "bcz.com",
+      "pathPattern": "/sign",
+      "category": "Web 2.0 Submission",
+      "spamScore": 3.0,
+      "mappings": {}
+    },
+    {
+      "id": "bitsdujour-com-pc-download-signup",
+      "name": "bitsdujour.com — Signup",
+      "urlPattern": "bitsdujour.com",
+      "pathPattern": "/pc-download",
+      "category": "Social Profile Submission",
+      "spamScore": 7.0,
+      "mappings": {
+        "email": "#email_2"
+      }
+    },
+    {
+      "id": "blurb-com-my-account-login-login",
+      "name": "blurb.com — Login",
+      "urlPattern": "blurb.com",
+      "pathPattern": "/my/account/login",
+      "category": "Social Profile Submission",
+      "spamScore": 5.0,
+      "mappings": {}
+    },
+    {
+      "id": "bresdel-com-login",
+      "name": "bresdel.com — Login",
+      "urlPattern": "bresdel.com",
+      "pathPattern": "/",
+      "category": "Social Profile Submission",
+      "spamScore": 10.0,
+      "mappings": {}
+    },
+    {
+      "id": "brownbook-net-add-business-page",
+      "name": "brownbook.net — Other",
+      "urlPattern": "brownbook.net",
+      "pathPattern": "/add-business",
+      "category": "Local Listing Submission",
+      "spamScore": 10.0,
+      "mappings": {
+        "address": "#_r_t_-form-item",
+        "city": "#_r_u_-form-item",
+        "postcode": "#_r_11_-form-item",
+        "phone": [
+          "#_r_12_-form-item",
+          "#_r_13_-form-item"
+        ],
+        "email": "#_r_15_-form-item",
+        "website": [
+          "#_r_16_-form-item",
+          "#_r_17_-form-item",
+          "#_r_19_-form-item",
+          "#_r_1a_-form-item",
+          "#_r_1b_-form-item",
+          "#_r_1c_-form-item"
+        ]
+      }
+    },
+    {
+      "id": "businesslistingplus-com-login",
+      "name": "businesslistingplus.com — Login",
+      "urlPattern": "businesslistingplus.com",
+      "pathPattern": "/",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "calendly-com-app-personal-profile-page",
+      "name": "calendly.com — Other",
+      "urlPattern": "calendly.com",
+      "pathPattern": "/app/personal/profile",
+      "category": "Social Profile Submission",
+      "spamScore": 5.0,
+      "mappings": {}
+    },
+    {
+      "id": "callupcontact-com-active-login-signin-php-login",
+      "name": "callupcontact.com — Login",
+      "urlPattern": "callupcontact.com",
+      "pathPattern": "/active/login/signin.php",
+      "category": "Local Listing Submission",
+      "spamScore": 5.0,
+      "mappings": {}
+    },
+    {
+      "id": "cartoonmovement-com-user-login-login",
+      "name": "cartoonmovement.com — Login",
+      "urlPattern": "cartoonmovement.com",
+      "pathPattern": "/user/login",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "codeberg-org-user-login-login",
+      "name": "codeberg.org — Login",
+      "urlPattern": "codeberg.org",
+      "pathPattern": "/user/login",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "codeberg-org-user-settings-page",
+      "name": "codeberg.org — Other",
+      "urlPattern": "codeberg.org",
+      "pathPattern": "/user/settings",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "codepen-signup",
+      "name": "CodePen — Signup",
+      "urlPattern": "codepen.io",
+      "pathPattern": "/accounts/signup/user/free",
+      "category": "Social Profile Submission",
+      "spamScore": 5,
+      "mappings": {
+        "username": "input[id='username']",
+        "email": "input[id='email']",
+        "password": "input[id='password']"
+      }
+    },
+    {
+      "id": "codepen-login",
+      "name": "CodePen — Login",
+      "urlPattern": "codepen.io",
+      "pathPattern": "/login",
+      "category": "Social Profile Submission",
+      "spamScore": 5,
+      "mappings": {
+        "email": "input[id='username']",
+        "password": "input[id='password']"
+      }
+    },
+    {
+      "id": "create-piktochart-com-users-sign-in-login",
+      "name": "create.piktochart.com — Login",
+      "urlPattern": "create.piktochart.com",
+      "pathPattern": "/users/sign_in",
+      "category": "Image Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "create-piktochart-com-users-sign-up-signup",
+      "name": "create.piktochart.com — Signup",
+      "urlPattern": "create.piktochart.com",
+      "pathPattern": "/users/sign_up",
+      "category": "Image Submission",
+      "spamScore": 1.0,
+      "mappings": {
+        "username": "#user_username",
+        "email": "#user_email",
+        "password": "#user_password"
+      }
+    },
+    {
+      "id": "creativemarket-com-sign-in-login",
+      "name": "creativemarket.com — Login",
+      "urlPattern": "creativemarket.com",
+      "pathPattern": "/sign-in",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {
+        "username": "#sp-textfield-69988",
+        "password": "input[name=\"password\"]"
+      }
+    },
+    {
+      "id": "crokes-com-register-signup",
+      "name": "crokes.com — Signup",
+      "urlPattern": "crokes.com",
+      "pathPattern": "/register/",
+      "category": "Social Profile Submission",
+      "spamScore": 2.0,
+      "mappings": {}
+    },
+    {
+      "id": "daniweb-com-connect-profile-login-login",
+      "name": "daniweb.com — Login",
+      "urlPattern": "daniweb.com",
+      "pathPattern": "/connect/profile/login",
+      "category": "Local Listing Submission",
+      "spamScore": 2.0,
+      "mappings": {}
+    },
+    {
+      "id": "digitalmark8-com-login",
+      "name": "digitalmark8.com — Login",
+      "urlPattern": "digitalmark8.com",
+      "pathPattern": "/",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "digitalmarketingdeal-com-login-login",
+      "name": "digitalmarketingdeal.com — Login",
+      "urlPattern": "digitalmarketingdeal.com",
+      "pathPattern": "/login",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "directory-justbaazaar-com-login",
+      "name": "directory.justbaazaar.com — Login",
+      "urlPattern": "directory.justbaazaar.com",
+      "pathPattern": "/",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "disqus-com-publishers-login-login",
+      "name": "disqus.com — Login",
+      "urlPattern": "disqus.com",
+      "pathPattern": "/publishers/login/",
+      "category": "Social Profile Submission",
+      "spamScore": 9.0,
+      "mappings": {}
+    },
+    {
+      "id": "doyoubuzz-com-us-login-login",
+      "name": "doyoubuzz.com — Login",
+      "urlPattern": "doyoubuzz.com",
+      "pathPattern": "/us/login",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "easyhits4u-com-signup",
+      "name": "easyhits4u.com — Signup",
+      "urlPattern": "easyhits4u.com",
+      "pathPattern": "/",
+      "category": "Social Profile Submission",
+      "spamScore": 8.0,
+      "mappings": {
+        "email": "#email",
+        "password": [
+          "#pass",
+          "#cpass"
+        ],
+        "website": "#link"
+      }
+    },
+    {
+      "id": "ec21-com-global-member-myregist-jsp-signup",
+      "name": "ec21.com — Signup",
+      "urlPattern": "ec21.com",
+      "pathPattern": "/global/member/MyRegist.jsp",
+      "category": "Local Listing Submission",
+      "spamScore": 6.0,
+      "mappings": {}
+    },
+    {
+      "id": "eternagame-org-login",
+      "name": "eternagame.org — Login",
+      "urlPattern": "eternagame.org",
+      "pathPattern": "/",
+      "category": "Social Profile Submission",
+      "spamScore": 8.0,
+      "mappings": {
+        "username": "#__BVID__240",
+        "password": "#__BVID__241"
+      }
+    },
+    {
+      "id": "expatriates-com-scripts-posting-poststep1-epl-login",
+      "name": "expatriates.com — Login",
+      "urlPattern": "expatriates.com",
+      "pathPattern": "/scripts/posting/poststep1.epl",
+      "category": "Classifieds Submission",
+      "spamScore": 5.0,
+      "mappings": {}
+    },
+    {
+      "id": "fashonation-com-login-login",
+      "name": "fashonation.com — Login",
+      "urlPattern": "fashonation.com",
+      "pathPattern": "/login/",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "fashonation-com-register-signup",
+      "name": "fashonation.com — Signup",
+      "urlPattern": "fashonation.com",
+      "pathPattern": "/register/",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "files-fm-login",
+      "name": "files.fm — Login",
+      "urlPattern": "files.fm",
+      "pathPattern": "/",
+      "category": "Social Profile Submission",
+      "spamScore": 2.0,
+      "mappings": {}
+    },
+    {
+      "id": "findaspring-org-wp-login-php-login",
+      "name": "findaspring.org — Login",
+      "urlPattern": "findaspring.org",
+      "pathPattern": "/wp-login.php",
+      "category": "Social Profile Submission",
+      "spamScore": 3.0,
+      "mappings": {}
+    },
+    {
+      "id": "fitinline-com-login-login",
+      "name": "fitinline.com — Login",
+      "urlPattern": "fitinline.com",
+      "pathPattern": "/login/",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "fitinline-com-user-setting-personal-page",
+      "name": "fitinline.com — Other",
+      "urlPattern": "fitinline.com",
+      "pathPattern": "/user/setting/personal/",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "fundable-com-gm-international-freight-forwarders-corp-1-page",
+      "name": "fundable.com — Other",
+      "urlPattern": "fundable.com",
+      "pathPattern": "/gm-international-freight-forwarders-corp-1",
+      "category": "Social Profile Submission",
+      "spamScore": 3.0,
+      "mappings": {}
+    },
+    {
+      "id": "genius-com-login",
+      "name": "genius.com — Login",
+      "urlPattern": "genius.com",
+      "pathPattern": "/",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "getsocialpr-com-login",
+      "name": "getsocialpr.com — Login",
+      "urlPattern": "getsocialpr.com",
+      "pathPattern": "/",
+      "category": "Social Bookmarking Submission",
+      "spamScore": 2.0,
+      "mappings": {}
+    },
+    {
+      "id": "gifyu-com-login-login",
+      "name": "gifyu.com — Login",
+      "urlPattern": "gifyu.com",
+      "pathPattern": "/login",
+      "category": "Image Submission",
+      "spamScore": 8.0,
+      "mappings": {}
+    },
+    {
+      "id": "github-com-login-login",
+      "name": "github.com — Login",
+      "urlPattern": "github.com",
+      "pathPattern": "/login",
+      "category": "Image Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "gitlab-innive-com-profile-page",
+      "name": "gitlab.innive.com — Other",
+      "urlPattern": "gitlab.innive.com",
+      "pathPattern": "/-/profile",
+      "category": "Social Profile Submission",
+      "spamScore": 10.0,
+      "mappings": {}
+    },
+    {
+      "id": "go-tdwi-org-subscribe-to-tdwi-html-signup",
+      "name": "tdwi.org — Signup",
+      "urlPattern": "go.tdwi.org",
+      "pathPattern": "/Subscribe-to-TDWI.html",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "growkudos-com-register-signup",
+      "name": "growkudos.com — Signup",
+      "urlPattern": "growkudos.com",
+      "pathPattern": "/register",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "habr-com-ru-settings-profile-page",
+      "name": "habr.com — Other",
+      "urlPattern": "habr.com",
+      "pathPattern": "/ru/settings/profile/",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "homestyler-com-profile-page",
+      "name": "homestyler.com — Other",
+      "urlPattern": "homestyler.com",
+      "pathPattern": "/profile",
+      "category": "Social Profile Submission",
+      "spamScore": 3.0,
+      "mappings": {}
+    },
+    {
+      "id": "hubpages-com-signin-login",
+      "name": "hubpages.com — Login",
+      "urlPattern": "hubpages.com",
+      "pathPattern": "/signin/",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {
+        "username": "#us1shem2",
+        "password": "#us1sisma2"
+      }
+    },
+    {
+      "id": "icy-veins-com-forums-login-signup",
+      "name": "icy-veins.com — Signup",
+      "urlPattern": "icy-veins.com",
+      "pathPattern": "/forums/login/",
+      "category": "Social Profile Submission",
+      "spamScore": 5.0,
+      "mappings": {}
+    },
+    {
+      "id": "identity-flickr-com-sign-up-signup",
+      "name": "flickr.com — Signup",
+      "urlPattern": "identity.flickr.com",
+      "pathPattern": "/sign-up",
+      "category": "Social Profile Submission",
+      "spamScore": 10.0,
+      "mappings": {}
+    },
+    {
+      "id": "imgbb-com-login-login",
+      "name": "ibb.co — Login",
+      "urlPattern": "imgbb.com",
+      "pathPattern": "/login",
+      "category": "Image Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "inkbunny-net-createuser-php-signup",
+      "name": "inkbunny.net — Signup",
+      "urlPattern": "inkbunny.net",
+      "pathPattern": "/createuser.php",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "jobs-siliconflorist-com-employers-sign-up-signup",
+      "name": "jobs.siliconflorist.com — Signup",
+      "urlPattern": "jobs.siliconflorist.com",
+      "pathPattern": "/employers/sign_up",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "jumpshare-com-login-login",
+      "name": "jumpshare.com — Login",
+      "urlPattern": "jumpshare.com",
+      "pathPattern": "/login",
+      "category": "Document Sharing Submission",
+      "spamScore": 10.0,
+      "mappings": {}
+    },
+    {
+      "id": "khadas-com-profile-gminternationalfreightforwarde98819-profile-page",
+      "name": "khadas.com — Other",
+      "urlPattern": "khadas.com",
+      "pathPattern": "/profile/gminternationalfreightforwarde98819/profile",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "kickstarter-com-signup-signup",
+      "name": "kickstarter.com — Signup",
+      "urlPattern": "kickstarter.com",
+      "pathPattern": "/signup",
+      "category": "Social Profile Submission",
+      "spamScore": 9.0,
+      "mappings": {}
+    },
+    {
+      "id": "ko-fi-com-account-login-login",
+      "name": "ko-fi.com — Login",
+      "urlPattern": "ko-fi.com",
+      "pathPattern": "/account/login",
+      "category": "Image Submission",
+      "spamScore": 8.0,
+      "mappings": {}
+    },
+    {
+      "id": "kwork-com-login",
+      "name": "kwork.com — Login",
+      "urlPattern": "kwork.com",
+      "pathPattern": "/",
+      "category": "Social Profile Submission",
+      "spamScore": 2.0,
+      "mappings": {
+        "email": "input[placeholder=\"Email address or username\"]",
+        "password": "input[placeholder=\"Password\"]"
+      }
+    },
+    {
+      "id": "kwork-com-settings-page",
+      "name": "kwork.com — Other",
+      "urlPattern": "kwork.com",
+      "pathPattern": "/settings",
+      "category": "Social Profile Submission",
+      "spamScore": 2.0,
+      "mappings": {}
+    },
+    {
+      "id": "land-book-com-gmfreight-edit-page",
+      "name": "land-book.com — Other",
+      "urlPattern": "land-book.com",
+      "pathPattern": "/gmfreight/edit",
+      "category": "Local Listing Submission",
+      "spamScore": 2.0,
+      "mappings": {}
+    },
+    {
+      "id": "linktr-ee-universal-login-login",
+      "name": "linktr.ee — Login",
+      "urlPattern": "linktr.ee",
+      "pathPattern": "/universal-login",
+      "category": "Social Profile Submission",
+      "spamScore": 2.0,
+      "mappings": {}
+    },
+    {
+      "id": "livejournal-com-login",
+      "name": "livejournal.com — Login",
+      "urlPattern": "livejournal.com",
+      "pathPattern": "/",
+      "category": "Article Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "livejournal-signup",
+      "name": "LiveJournal — Signup",
+      "urlPattern": "livejournal.com",
+      "pathPattern": "/create",
+      "category": "Article Submission",
+      "spamScore": 5,
+      "mappings": {
+        "username": "#username",
+        "email": "#email",
+        "password": "#password",
+        "password2": "#passwordconfirm"
+      }
+    },
+    {
+      "id": "livejournal-com-create-signup",
+      "name": "livejournal.com — Signup",
+      "urlPattern": "livejournal.com",
+      "pathPattern": "/create/",
+      "category": "Article Submission",
+      "spamScore": 1.0,
+      "mappings": {
+        "username": "#username",
+        "email": "#email",
+        "password": [
+          "#password",
+          "#fakepassword"
+        ],
+        "password2": "#passwordconfirm"
+      }
+    },
+    {
+      "id": "livejournal-login",
+      "name": "LiveJournal — Login",
+      "urlPattern": "livejournal.com",
+      "pathPattern": "/login.bml",
+      "category": "Article Submission",
+      "spamScore": 5,
+      "mappings": {
+        "username": "#user",
+        "password": "#lj_loginwidget_password"
+      }
+    },
+    {
+      "id": "localstar-org-add-listings-login",
+      "name": "localstar.org — Login",
+      "urlPattern": "localstar.org",
+      "pathPattern": "/add-listings",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "logcla-login",
+      "name": "LogCla — Login",
+      "urlPattern": "logcla.com",
+      "pathPattern": "",
+      "category": "Social Profile Submission",
+      "spamScore": 5,
+      "mappings": {
+        "email": "input[name=\"username_email\"]",
+        "password": "input[name=\"password\"]"
+      }
+    },
+    {
+      "id": "login-docker-com-u-login-identifier-login",
+      "name": "docker.com — Login",
+      "urlPattern": "login.docker.com",
+      "pathPattern": "/u/login/identifier",
+      "category": "Social Profile Submission",
+      "spamScore": 2.0,
+      "mappings": {}
+    },
+    {
+      "id": "login-ec21-com-global-login-login-jsp-login",
+      "name": "ec21.com — Login",
+      "urlPattern": "login.ec21.com",
+      "pathPattern": "/global/login/Login.jsp",
+      "category": "Local Listing Submission",
+      "spamScore": 6.0,
+      "mappings": {}
+    },
+    {
+      "id": "magcloud-com-login-signup",
+      "name": "magcloud.com — Signup",
+      "urlPattern": "magcloud.com",
+      "pathPattern": "/login",
+      "category": "Social Profile Submission",
+      "spamScore": 3.0,
+      "mappings": {}
+    },
+    {
+      "id": "magnitt-com-login-login",
+      "name": "magnitt.com — Login",
+      "urlPattern": "magnitt.com",
+      "pathPattern": "/login",
+      "category": "Social Profile Submission",
+      "spamScore": 7.0,
+      "mappings": {}
+    },
+    {
+      "id": "maphub-net-login-login",
+      "name": "maphub.net — Login",
+      "urlPattern": "maphub.net",
+      "pathPattern": "/login",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "maps-roadtrippers-com-signup",
+      "name": "maps.roadtrippers.com — Signup",
+      "urlPattern": "maps.roadtrippers.com",
+      "pathPattern": "/",
+      "category": "Local Listing Submission",
+      "spamScore": 2.0,
+      "mappings": {
+        "username": "#username",
+        "email": [
+          "#email",
+          "#marketing_emails_opt_in[false]"
+        ],
+        "password": "#password"
+      }
+    },
+    {
+      "id": "micro-blog-account-page",
+      "name": "micro.blog — Other",
+      "urlPattern": "micro.blog",
+      "pathPattern": "/account",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "muamat-com-classifieds-login-html-login",
+      "name": "muamat.com — Login",
+      "urlPattern": "muamat.com",
+      "pathPattern": "/classifieds/login.html",
+      "category": "Classifieds Submission",
+      "spamScore": 5.0,
+      "mappings": {}
+    },
+    {
+      "id": "muamat-com-classifieds-register-html-signup",
+      "name": "muamat.com — Signup",
+      "urlPattern": "muamat.com",
+      "pathPattern": "/classifieds/register.html",
+      "category": "Classifieds Submission",
+      "spamScore": 5.0,
+      "mappings": {}
+    },
+    {
+      "id": "my-pbworks-com-login",
+      "name": "pbworks.com — Login",
+      "urlPattern": "my.pbworks.com",
+      "pathPattern": "/",
+      "category": "Web 2.0 Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "mydramalist-com-signin-login",
+      "name": "mydramalist.com — Login",
+      "urlPattern": "mydramalist.com",
+      "pathPattern": "/signin",
+      "category": "Social Profile Submission",
+      "spamScore": 4.0,
+      "mappings": {}
+    },
+    {
+      "id": "myspace-com-gmfreights-bio-page",
+      "name": "myspace.com — Other",
+      "urlPattern": "myspace.com",
+      "pathPattern": "/gmfreights/bio",
+      "category": "Social Profile Submission",
+      "spamScore": 8.0,
+      "mappings": {}
+    },
+    {
+      "id": "myspace-com-signin-login",
+      "name": "myspace.com — Login",
+      "urlPattern": "myspace.com",
+      "pathPattern": "/signin",
+      "category": "Social Profile Submission",
+      "spamScore": 8.0,
+      "mappings": {}
+    },
+    {
+      "id": "mysportsgo-com-signup-signup",
+      "name": "mysportsgo.com — Signup",
+      "urlPattern": "mysportsgo.com",
+      "pathPattern": "/signup",
+      "category": "Social Profile Submission",
+      "spamScore": 4.0,
+      "mappings": {}
+    },
+    {
+      "id": "myxwiki-org-xwiki-bin-register-xwiki-xwikiregister-signup",
+      "name": "myxwiki.org — Signup",
+      "urlPattern": "myxwiki.org",
+      "pathPattern": "/xwiki/bin/register/XWiki/XWikiRegister",
+      "category": "Social Profile Submission",
+      "spamScore": 10.0,
+      "mappings": {}
+    },
+    {
+      "id": "next-mssg-me-auth-login-login",
+      "name": "mssg.me — Login",
+      "urlPattern": "next.mssg.me",
+      "pathPattern": "/auth/login",
+      "category": "Social Profile Submission",
+      "spamScore": 10.0,
+      "mappings": {
+        "email": "#username",
+        "password": "#password"
+      }
+    },
+
+    {
+      "id": "padlet-login",
+      "name": "Padlet — Login",
+      "urlPattern": "padlet.com",
+      "pathPattern": "/auth/org_login_redirect",
+      "category": "Article Submission",
+      "spamScore": 5,
+      "mappings": {
+  "firstname": "form.flex.flex-col #org-domain-input"
+      }
+    },
+    {
+      "id": "padlet-signup",
+      "name": "Padlet — Signup",
+      "urlPattern": "padlet.com",
+      "pathPattern": "/auth/signup",
+      "category": "Article Submission",
+      "spamScore": 5,
+      "mappings": {
+        "username": "#username-input",
+        "password": "#password-input"
+      }
+    },
+    {
+      "id": "pearltrees-signup",
+      "name": "Pearltrees — Signup",
+      "urlPattern": "pearltrees.com",
+      "pathPattern": "",
+      "category": "Article Submission",
+      "spamScore": 5,
+      "mappings": {
+       
+      }
+    },
+    {
+      "id": "pearltrees-com-login",
+      "name": "pearltrees.com — Login",
+      "urlPattern": "pearltrees.com",
+      "pathPattern": "",
+      "category": "Article Submission",
+      "spamScore": 10.0,
+      "mappings": {
+        "firstname": "form#signin_form #log_username",
+        "password": "form#signin_form #log_password"
+      },
+      "submit": "#signin-button"
+    },
+    {
+      "id": "peatix-com-signin-login",
+      "name": "peatix.com — Login",
+      "urlPattern": "peatix.com",
+      "pathPattern": "/signin",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "photouploads-com-login-login",
+      "name": "photouploads.com — Login",
+      "urlPattern": "photouploads.com",
+      "pathPattern": "/login",
+      "category": "Image Submission",
+      "spamScore": 4.0,
+      "mappings": {}
+    },
+    {
+      "id": "pixabay-com-signup",
+      "name": "pixabay.com — Signup",
+      "urlPattern": "pixabay.com",
+      "pathPattern": "/",
+      "category": "Social Profile Submission",
+      "spamScore": 4.0,
+      "mappings": {
+        "username": "input[name=\"signup_username\"]",
+        "email": "input[name=\"signup_email\"]",
+        "password": "input[name=\"signup_pass\"]"
+      }
+    },
+    {
+      "id": "pixabay-com-accounts-settings-page",
+      "name": "pixabay.com — Other",
+      "urlPattern": "pixabay.com",
+      "pathPattern": "/accounts/settings/",
+      "category": "Social Profile Submission",
+      "spamScore": 4.0,
+      "mappings": {}
+    },
+    {
+      "id": "producerbox-com-users-registration-signup",
+      "name": "producerbox.com — Signup",
+      "urlPattern": "producerbox.com",
+      "pathPattern": "/users/registration",
+      "category": "Social Profile Submission",
+      "spamScore": 3.0,
+      "mappings": {}
+    },
+    {
+      "id": "projectnoah-org-user-login-login",
+      "name": "projectnoah.org — Login",
+      "urlPattern": "projectnoah.org",
+      "pathPattern": "/user/login",
+      "category": "Local Listing Submission",
+      "spamScore": 3.0,
+      "mappings": {}
+    },
+    {
+      "id": "projectnoah-org-user-register-signup",
+      "name": "projectnoah.org — Signup",
+      "urlPattern": "projectnoah.org",
+      "pathPattern": "/user/register",
+      "category": "Local Listing Submission",
+      "spamScore": 3.0,
+      "mappings": {}
+    },
+    {
+      "id": "provenexpert-com-gm-international-freight-forwarders-corp2-page",
+      "name": "provenexpert.com — Other",
+      "urlPattern": "provenexpert.com",
+      "pathPattern": "/gm-international-freight-forwarders-corp2/",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "pubpub-org-user-gm-international-freight-forwarders-corp-2-edit-page",
+      "name": "pubpub.org — Other",
+      "urlPattern": "pubpub.org",
+      "pathPattern": "/user/gm-international-freight-forwarders-corp-2/edit",
+      "category": "Social Profile Submission",
+      "spamScore": 9.0,
+      "mappings": {}
+    },
+    {
+      "id": "pxhere-com-en-signup-signup",
+      "name": "pxhere.com — Signup",
+      "urlPattern": "pxhere.com",
+      "pathPattern": "/en/signup",
+      "category": "Social Profile Submission",
+      "spamScore": 3.0,
+      "mappings": {
+        "lastname": "input[name=\"last_name\"]"
+      }
+    },
+    {
+      "id": "ranker-com-writer-gmfreight-page",
+      "name": "ranker.com — Other",
+      "urlPattern": "ranker.com",
+      "pathPattern": "/writer/gmfreight",
+      "category": "Social Profile Submission",
+      "spamScore": 3.0,
+      "mappings": {}
+    },
+    {
+      "id": "reddit-com-login",
+      "name": "reddit.com — Login",
+      "urlPattern": "reddit.com",
+      "pathPattern": "/",
+      "category": "Social Bookmarking Submission",
+      "spamScore": 3.0,
+      "mappings": {}
+    },
+    {
+      "id": "robertsspaceindustries-com-en-login",
+      "name": "robertsspaceindustries.com — Login",
+      "urlPattern": "robertsspaceindustries.com",
+      "pathPattern": "/en/",
+      "category": "Social Profile Submission",
+      "spamScore": 9.0,
+      "mappings": {
+        "username": "#:r9:",
+        "password": "#:ra:"
+      }
+    },
+    {
+      "id": "robertsspaceindustries-com-en-enlist-signup",
+      "name": "robertsspaceindustries.com — Signup",
+      "urlPattern": "robertsspaceindustries.com",
+      "pathPattern": "/en/enlist",
+      "category": "Social Profile Submission",
+      "spamScore": 9.0,
+      "mappings": {
+        "email": "#:r6:",
+        "password": "#:r7:"
+      }
+    },
+    {
+      "id": "scribblemaps-com-account-login-login",
+      "name": "scribblemaps.com — Login",
+      "urlPattern": "scribblemaps.com",
+      "pathPattern": "/account/login",
+      "category": "Local Listing Submission",
+      "spamScore": 4.0,
+      "mappings": {}
+    },
+    {
+      "id": "secure-smore-com-signup-signup",
+      "name": "secure.smore.com — Signup",
+      "urlPattern": "secure.smore.com",
+      "pathPattern": "/signup",
+      "category": "Article Submission",
+      "spamScore": 1.0,
+      "mappings": {
+        "firstname": "input[autocomplete=\"given-name\"]",
+        "lastname": "input[autocomplete=\"family-name\"]",
+        "email": "input[autocomplete=\"email\"]",
+        "password": "input[placeholder=\"Enter your password\"]"
+      }
+    },
+    {
+      "id": "serviceprofessionalsnetwork-com-register-signup",
+      "name": "serviceprofessionalsnetwork.com — Signup",
+      "urlPattern": "serviceprofessionalsnetwork.com",
+      "pathPattern": "/register/",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "serviceprofessionalsnetwork-com-wp-login-php-login",
+      "name": "serviceprofessionalsnetwork.com — Login",
+      "urlPattern": "serviceprofessionalsnetwork.com",
+      "pathPattern": "/wp-login.php",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "slideserve-com-login-login",
+      "name": "slideserve.com — Login",
+      "urlPattern": "slideserve.com",
+      "pathPattern": "/login",
+      "category": "Document Sharing Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "slideshare-net-login-email-login",
+      "name": "slideshare.net — Login",
+      "urlPattern": "slideshare.net",
+      "pathPattern": "/login/email",
+      "category": "Document Sharing Submission",
+      "spamScore": 3.0,
+      "mappings": {}
+    },
+    {
+      "id": "sociomix-com-register-login",
+      "name": "sociomix.com — Login",
+      "urlPattern": "sociomix.com",
+      "pathPattern": "/register",
+      "category": "Article Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "speakerdeck-signin",
+      "name": "Speaker Deck — Sign in",
+      "urlPattern": "speakerdeck.com",
+      "pathPattern": "/signin",
+      "category": "Document Sharing Submission",
+      "spamScore": 2,
+      "mappings": {
+        "username": "#user_username",
+        "password": "#user_password"
+      }
+    },
+    {
+      "id": "speakerdeck-signup",
+      "name": "Speaker Deck — Signup",
+      "urlPattern": "speakerdeck.com",
+      "pathPattern": "/signup",
+      "category": "Document Sharing Submission",
+      "spamScore": 2,
+      "mappings": {
+        "fullname": "#user_name",
+        "username": "#user_username",
+        "email": "#user_email",
+        "password": "#user_password",
+        "password2": "#user_password_confirmation"
+      }
+    },
+    {
+      "id": "spiritfanfiction-com-cadastrar-signup",
+      "name": "spiritfanfiction.com — Signup",
+      "urlPattern": "spiritfanfiction.com",
+      "pathPattern": "/cadastrar",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "spiritfanfiction-com-login-login",
+      "name": "spiritfanfiction.com — Login",
+      "urlPattern": "spiritfanfiction.com",
+      "pathPattern": "/login",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "spreaker-com-signup-signup",
+      "name": "spreaker.com — Signup",
+      "urlPattern": "spreaker.com",
+      "pathPattern": "/signup",
+      "category": "Social Profile Submission",
+      "spamScore": 2.0,
+      "mappings": {}
+    },
+    {
+      "id": "stackoverflow-com-users-edit-32272673-page",
+      "name": "stackoverflow.com — Other",
+      "urlPattern": "stackoverflow.com",
+      "pathPattern": "/users/edit/32272673",
+      "category": "Social Profile Submission",
+      "spamScore": 2.0,
+      "mappings": {}
+    },
+    {
+      "id": "startupxplore-com-en-login-auth-login",
+      "name": "startupxplore.com — Login",
+      "urlPattern": "startupxplore.com",
+      "pathPattern": "/en/login/auth",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {
+        "email": "#username"
+      }
+    },
+    {
+      "id": "startupxplore-com-en-register-index-signup",
+      "name": "startupxplore.com — Signup",
+      "urlPattern": "startupxplore.com",
+      "pathPattern": "/en/register/index",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "stck-me-signin-login",
+      "name": "stck.me — Login",
+      "urlPattern": "stck.me",
+      "pathPattern": "/signin",
+      "category": "Web 2.0 Submission",
+      "spamScore": 1.0,
+      "mappings": {
+        "email": "input[name=\"userId\"]",
+        "password": "input[name=\"password\"]"
+      }
+    },
+    {
+      "id": "stck-me-signup-signup",
+      "name": "stck.me — Signup",
+      "urlPattern": "stck.me",
+      "pathPattern": "/signup",
+      "category": "Web 2.0 Submission",
+      "spamScore": 1.0,
+      "mappings": {
+        "username": "input[name=\"username\"]",
+        "email": "input[name=\"userId\"]",
+        "password": "input[name=\"password\"]"
+      }
+    },
+    {
+      "id": "stocktwits-com-signin-login",
+      "name": "stocktwits.com — Login",
+      "urlPattern": "stocktwits.com",
+      "pathPattern": "/signin",
+      "category": "Local Listing Submission",
+      "spamScore": 3.0,
+      "mappings": {
+        "email": "input[name=\"login\"]",
+        "password": "input[name=\"password\"]"
+      }
+    },
+    {
+      "id": "storeboard-com-sign-in-login",
+      "name": "storeboard.com — Login",
+      "urlPattern": "storeboard.com",
+      "pathPattern": "/sign-in/",
+      "category": "Local Listing Submission",
+      "spamScore": 3.0,
+      "mappings": {}
+    },
+    {
+      "id": "storymirror-com-profile-e30ut00m-edit-page",
+      "name": "storymirror.com — Other",
+      "urlPattern": "storymirror.com",
+      "pathPattern": "/profile/e30ut00m/edit",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "strikingly-com-s-login-login",
+      "name": "mystrikingly.com — Login",
+      "urlPattern": "strikingly.com",
+      "pathPattern": "/s/login",
+      "category": "Web 2.0 Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "stylevore-com-login",
+      "name": "stylevore.com — Login",
+      "urlPattern": "stylevore.com",
+      "pathPattern": "/",
+      "category": "Social Profile Submission",
+      "spamScore": 3.0,
+      "mappings": {}
+    },
+    {
+      "id": "sutori-com-en-login-login",
+      "name": "Sutori — Login",
+      "urlPattern": "sutori.com",
+      "pathPattern": "/en/login",
+      "category": "Social Profile Submission",
+      "spamScore": 5,
+      "mappings": {
+        "email": "form.sutori-form input[name='login']",
+        "password": "form.sutori-form input[name='password'][type='password']"
+      }
+    },
+    {
+      "id": "talk-plesk-com-login",
+      "name": "talk.plesk.com — Login",
+      "urlPattern": "talk.plesk.com",
+      "pathPattern": "/",
+      "category": "Social Profile Submission",
+      "spamScore": 2.0,
+      "mappings": {}
+    },
+    {
+      "id": "taskade-com-login-signup",
+      "name": "My Site — Login/Signup",
+      "urlPattern": "taskade.com",
+      "pathPattern": "/login",
+      "category": "Article Submission",
+      "spamScore": 5,
+      "mappings": {
+        "email": "input[name=\"username\"]"
+      }
+    },
+    {
+      "id": "taskade-com-signup-signup",
+      "name": "My Site — Signup",
+      "urlPattern": "taskade.com",
+      "pathPattern": "/signup",
+      "category": "Article Submission",
+      "spamScore": 5,
+      "mappings": {
+        "email": "input[name=\"email\"]",
+        "username": "input[name=\"username\"]",
+        "password": "input[name=\"password\"]"
+      }
+    },
+    {
+      "id": "thetoptens-com-signup",
+      "name": "thetoptens.com — Signup",
+      "urlPattern": "thetoptens.com",
+      "pathPattern": "/",
+      "category": "Local Listing Submission",
+      "spamScore": 3.0,
+      "mappings": {
+        "username": "input[autocomplete=\"off\"]",
+        "password": "input[autocomplete=\"off\"]",
+        "email": "input[placeholder=\"Email\"]"
+      }
+    },
+    {
+      "id": "thetoptens-com-m-gmfreight-page",
+      "name": "thetoptens.com — Other",
+      "urlPattern": "thetoptens.com",
+      "pathPattern": "/m/Gmfreight/",
+      "category": "Local Listing Submission",
+      "spamScore": 3.0,
+      "mappings": {}
+    },
+    {
+      "id": "tripadvisor-com-signup",
+      "name": "tripadvisor.com — Signup",
+      "urlPattern": "tripadvisor.com",
+      "pathPattern": "/",
+      "category": "Local Listing Submission",
+      "spamScore": 5.0,
+      "mappings": {}
+    },
+    {
+      "id": "tripoto-com-page",
+      "name": "www.tripoto.com",
+      "urlPattern": "tripoto.com",
+      "pathPattern": "",
+      "category": "Article Submission",
+      "spamScore": 5,
+      "mappings": {
+        "email": "input[name=\"data[User][username]\"]",
+        "password": "input[name=\"data[User][password]\"]",
+        "country": "#country-code-selector",
+        "phone": "input[name=\"data[User][phone]\"]"
+      }
+    },
+    {
+      "id": "tripoto-com-signup",
+      "name": "tripoto.com — Signup",
+      "urlPattern": "tripoto.com",
+      "pathPattern": "/",
+      "category": "Social Bookmarking Submission",
+      "spamScore": 1.0,
+      "mappings": {
+        "email": "input[name=\"data[User][username]\"]",
+        "password": "input[name=\"data[User][password]\"]",
+        "country": "#country-code-selector",
+        "phone": "input[name=\"data[User][phone]\"]"
+      }
+    },
+    {
+      "id": "us-enrollbusiness-com-createbusinessprofile-page",
+      "name": "us.enrollbusiness.com — Other",
+      "urlPattern": "us.enrollbusiness.com",
+      "pathPattern": "/CreateBusinessProfile",
+      "category": "Local Listing Submission",
+      "spamScore": 5.0,
+      "mappings": {}
+    },
+    {
+      "id": "wattpad-com-login",
+      "name": "wattpad.com — Login",
+      "urlPattern": "wattpad.com",
+      "pathPattern": "/",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "webdirex-com-registration-signup",
+      "name": "webdirex.com — Signup",
+      "urlPattern": "webdirex.com",
+      "pathPattern": "/registration/",
+      "category": "Local Listing Submission",
+      "spamScore": 10.0,
+      "mappings": {}
+    },
+    {
+      "id": "weeblyblog-com-register-signup",
+      "name": "weeblyblog.com — Signup",
+      "urlPattern": "weeblyblog.com",
+      "pathPattern": "/register/",
+      "category": "Article Submission",
+      "spamScore": 7.0,
+      "mappings": {}
+    },
+    {
+      "id": "wipplay-com-en-gb-login-login",
+      "name": "wipplay.com — Login",
+      "urlPattern": "wipplay.com",
+      "pathPattern": "/en_GB/login/",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "wipplay-com-en-gb-subscription-signup",
+      "name": "wipplay.com — Signup",
+      "urlPattern": "wipplay.com",
+      "pathPattern": "/en_GB/subscription/",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "wordpress-com-log-in-login",
+      "name": "wordpress.com — Login",
+      "urlPattern": "wordpress.com",
+      "pathPattern": "/log-in",
+      "category": "Web 2.0 Submission",
+      "spamScore": 1.0,
+      "mappings": {
+        "email": "#usernameOrEmail",
+        "password": "#password"
+      }
+    },
+    {
+      "id": "wordpress-com-setup-onboarding-user-signup",
+      "name": "wordpress.com — Signup",
+      "urlPattern": "wordpress.com",
+      "pathPattern": "/setup/onboarding/user",
+      "category": "Web 2.0 Submission",
+      "spamScore": 1.0,
+      "mappings": {
+        "email": "#signup-email"
+      }
+    },
+    {
+      "id": "worldanvil-com-login-login",
+      "name": "worldanvil.com — Login",
+      "urlPattern": "worldanvil.com",
+      "pathPattern": "/login",
+      "category": "Social Profile Submission",
+      "spamScore": 7.0,
+      "mappings": {}
+    },
+    {
+      "id": "youlookfab-com-signup-signup",
+      "name": "youlookfab.com — Signup",
+      "urlPattern": "youlookfab.com",
+      "pathPattern": "/signup/",
+      "category": "Social Profile Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "zumvu-com-login",
+      "name": "zumvu.com — Login",
+      "urlPattern": "zumvu.com",
+      "pathPattern": "/",
+      "category": "Local Listing Submission",
+      "spamScore": 1.0,
+      "mappings": {}
+    },
+    {
+      "id": "zupyak-signup",
+      "name": "Zupyak — Sign Up",
+      "urlPattern": "zupyak.com",
+      "pathPattern": "/signup",
+      "category": "Signup",
+      "spamScore": 5,
+      "mappings": {
+        "fullname": ".sign-up-content input.input[placeholder^='Full name']",
+        "company": ".sign-up-content input.input[placeholder^='Company name']",
+        "website": ".sign-up-content input.input[placeholder^='Website address']",
+        "email": ".sign-up-content input.input[placeholder='Email']",
+        "password": ".sign-up-content .password input.input[type='password'][placeholder='Password']"
+      },
+      "submit": ".sign-up-content .button-list button.y"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "_comment": "Sites catalog for opener – mapping se alag. Sirf sites opener UI ke liye.",
+  "_fields": "id, name, url, category, da, spamScore, follow, tasks[]",
+  "_categories": [
+    "Article Submission",
+    "Web 2.0 Submission",
+    "Classifieds Submission",
+    "Image Submission",
+    "Video Submission",
+    "Social Bookmarking Submission",
+    "Document Sharing Submission",
+    "Local Listing Submission",
+    "Social Profile Submission"
+  ],
+  "_followValues": ["dofollow", "nofollow", "mixed"],
+  "sites": [
+    {
+      "id": "logcla",
+      "name": "LogCla",
+      "url": "https://logcla.com/",
+      "category": "Social Profile Submission",
+      "da": 35,
+      "spamScore": 3,
+      "follow": "mixed",
+      "tasks": ["Social Profile Submission"]
+    },
+    {
+      "id": "sutori-login-en",
+      "name": "Sutori — Login (EN)",
+      "url": "https://www.sutori.com/en/login",
+      "category": "Document Sharing Submission",
+      "da": 52,
+      "spamScore": 2,
+      "follow": "dofollow",
+      "tasks": ["Profile"]
+    }
+  ]
+}
+
