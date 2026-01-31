@@ -140,6 +140,25 @@ I will now provide the screenshot. Extract and deliver the file per the rules ab
       }
     });
   }
+
+  // Categories and tasks arrays
+const categories = ["Article Submission", "Web 2.0 Submission", "Classifieds Submission"];
+const tasks = ["Social Profile Submission", "Image Submission", "Video Submission"];
+
+function populateCategoryAndTasks() {
+    const categoryTaskSelect = document.getElementById("sitesCategoryTask");
+    
+    // Merge and deduplicate categories and tasks
+    const combined = [...new Set([...categories, ...tasks])];
+
+    // Populate dropdown with the combined values
+    categoryTaskSelect.innerHTML = combined.map(item => `<option value="${item}">${item}</option>`).join('');
+}
+
+// Call the function to populate the dropdown
+populateCategoryAndTasks();
+
+
   function loadEnabled() {
     return new Promise((resolve) => {
       try {
@@ -151,6 +170,8 @@ I will now provide the screenshot. Extract and deliver the file per the rules ab
       }
     });
   }
+
+
   function setEnabled(enabled) {
     return new Promise((resolve) => {
       try {
@@ -158,6 +179,8 @@ I will now provide the screenshot. Extract and deliver the file per the rules ab
       } catch { resolve(); }
     });
   }
+
+  
   function clearStore() {
     return new Promise((resolve) => {
       try {
@@ -208,6 +231,24 @@ I will now provide the screenshot. Extract and deliver the file per the rules ab
 
     $("#description").value = x.description || x.bio || "";
   }
+
+const minEl = document.getElementById('sitesDaMin');
+const maxEl = document.getElementById('sitesDaMax');
+const minVal = document.getElementById('daMinVal');
+const maxVal = document.getElementById('daMaxVal');
+
+function sync() {
+  let a = parseInt(minEl.value || '0', 10);
+  let b = parseInt(maxEl.value || '0', 10);
+  if (a > b) { [a, b] = [b, a]; }
+  minVal.textContent = a;
+  maxVal.textContent = b;
+}
+
+minEl.addEventListener('input', sync);
+maxEl.addEventListener('input', sync);
+sync();
+
 
   function getUI() {
     const activePassword =
@@ -381,6 +422,10 @@ I will now provide the screenshot. Extract and deliver the file per the rules ab
     email: "email",
     "e mail": "email",
     "primary email": "email",
+    // submission email (separate mapping)
+    "submission email": "submissionemail",
+    "submission email id": "submissionemail",
+    submissionemail: "submissionemail",
     "confirm email": "email2",
     "email confirm": "email2",
     "email confirmation": "email2",
@@ -520,8 +565,8 @@ I will now provide the screenshot. Extract and deliver the file per the rules ab
         fullname: (tmp.fullname || "").trim(),
         username: tmp.username || "",
 
-        email: (tmp.email || "").trim(),
-        submissionEmail: (tmp.email || "").trim(),
+        email: (tmp.email || tmp.submissionemail || "").trim(),
+        submissionEmail: (tmp.submissionemail || tmp.email || "").trim(),
         businessEmail: (tmp.businessemail || tmp.workemail || "").trim(),
 
         password,
@@ -742,6 +787,8 @@ I will now provide the screenshot. Extract and deliver the file per the rules ab
   function renderSitesFilters() {
     const catSel = document.getElementById("sitesCategory");
     const taskSel = document.getElementById("sitesTask");
+    const catChipsEl = document.getElementById("sitesCategoryChips");
+    const taskChipsEl = document.getElementById("sitesTaskChips");
     if (!catSel || !taskSel) return;
 
     const cats = new Set();
@@ -763,47 +810,135 @@ I will now provide the screenshot. Extract and deliver the file per the rules ab
       if (current) sel.value = current;
     };
 
+    // Render category chips
+    if (catChipsEl) {
+      catChipsEl.innerHTML = "";
+      [...cats].sort().forEach((cat) => {
+        const label = document.createElement("label");
+        label.className = "fchip";
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.value = cat;
+        input.addEventListener("change", () => applySitesFilters());
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(` ${cat}`));
+        catChipsEl.appendChild(label);
+      });
+    }
+
+    // Render task chips
+    if (taskChipsEl) {
+      taskChipsEl.innerHTML = "";
+      [...tasks].sort().forEach((task) => {
+        const label = document.createElement("label");
+        label.className = "fchip";
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.value = task;
+        input.addEventListener("change", () => applySitesFilters());
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(` ${task}`));
+        taskChipsEl.appendChild(label);
+      });
+    }
+
+    // Update follow chips listeners
+    document.querySelectorAll("#sitesFollowChips input[type='checkbox']").forEach((cb) => {
+      cb.addEventListener("change", () => {
+        // If "All" is checked, uncheck others
+        if (cb.value === "" && cb.checked) {
+          document.querySelectorAll("#sitesFollowChips input[type='checkbox']:not([value=''])").forEach(c => c.checked = false);
+        } else if (cb.checked) {
+          // If specific follow is checked, uncheck "All"
+          document.querySelector("#sitesFollowChips input[value='']").checked = false;
+        }
+        applySitesFilters();
+      });
+    });
+
     addOpts(catSel, cats);
     addOpts(taskSel, tasks);
   }
 
   function applySitesFilters() {
     const q = (document.getElementById("sitesSearch")?.value || "").toLowerCase();
+    
+    // Get selected categories from chips
+    const catChips = Array.from(document.querySelectorAll("#sitesCategoryChips input[type='checkbox']:checked"));
+    const selectedCats = catChips.length > 0 ? catChips.map(c => c.value).filter(v => v) : [];
     const cat = document.getElementById("sitesCategory")?.value || "";
+    
+    // Get selected tasks from chips
+    const taskChips = Array.from(document.querySelectorAll("#sitesTaskChips input[type='checkbox']:checked"));
+    const selectedTasks = taskChips.length > 0 ? taskChips.map(c => c.value).filter(v => v) : [];
     const task = document.getElementById("sitesTask")?.value || "";
+    
+    // Get selected follow types from chips
+    const followChips = Array.from(document.querySelectorAll("#sitesFollowChips input[type='checkbox']:checked"));
+    const selectedFollows = followChips.length > 0 ? followChips.map(c => c.value).filter(v => v && v !== "all") : [];
     const follow = document.getElementById("sitesFollow")?.value || "";
+    
     const daMin = Number(document.getElementById("sitesDaMin")?.value || 0);
     const daMax = Number(document.getElementById("sitesDaMax")?.value || 100);
 
     sitesFiltered = sitesCatalog.filter((s) => {
+      // Search filter
       if (q && !(s.name || "").toLowerCase().includes(q) && !(s.url || "").toLowerCase().includes(q)) return false;
-      if (cat && s.category !== cat) return false;
-      if (task && (!Array.isArray(s.tasks) || !s.tasks.includes(task))) return false;
-      if (follow && s.follow !== follow) return false;
+      
+      // Category filter (chips take priority)
+      if (selectedCats.length > 0) {
+        if (!selectedCats.includes(s.category)) return false;
+      } else if (cat && s.category !== cat) return false;
+      
+      // Task filter (chips take priority)
+      if (selectedTasks.length > 0) {
+        if (!Array.isArray(s.tasks) || !s.tasks.some(t => selectedTasks.includes(t))) return false;
+      } else if (task && (!Array.isArray(s.tasks) || !s.tasks.includes(task))) return false;
+      
+      // Follow filter (chips take priority)
+      if (selectedFollows.length > 0) {
+        if (!selectedFollows.includes(s.follow)) return false;
+      } else if (follow && s.follow !== follow) return false;
+      
+      // DA range filter
       const da = Number(s.da || 0);
       if (da < daMin || da > daMax) return false;
+      
       return true;
     });
 
     renderSitesTable();
   }
 
+  function updateSitesCounts() {
+    const countEl = document.getElementById("sitesCount");
+    const selectedCountEl = document.getElementById("sitesSelectedCount");
+    const openCountEl = document.getElementById("sitesOpenCount");
+    const openBtn = document.getElementById("sitesOpenSelected");
+    
+    if (countEl) countEl.textContent = sitesFiltered.length;
+    if (selectedCountEl) selectedCountEl.textContent = sitesSelected.size;
+    if (openCountEl) openCountEl.textContent = sitesSelected.size;
+    if (openBtn) openBtn.disabled = sitesSelected.size === 0;
+  }
+
   function renderSitesTable() {
     const body = document.getElementById("sitesTableBody");
-    const countEl = document.getElementById("sitesCount");
-    const openBtn = document.getElementById("sitesOpenSelected");
-    if (!body || !countEl || !openBtn) return;
+    if (!body) return;
 
     body.innerHTML = "";
-    countEl.textContent = sitesFiltered.length;
-
     const maxSelect = 50;
 
-    sitesFiltered.forEach((s) => {
-      const tr = document.createElement("tr");
+    sitesFiltered.forEach((s, index) => {
       const isChecked = sitesSelected.has(s.id);
-
-      const tdCheck = document.createElement("td");
+      
+      const card = document.createElement("div");
+      card.className = `siteCard ${isChecked ? 'selected' : ''}`;
+      card.style.animationDelay = `${index * 0.02}s`;
+      
+      // Checkbox
+      const checkboxWrapper = document.createElement("div");
+      checkboxWrapper.className = "siteCardCheckbox";
       const cb = document.createElement("input");
       cb.type = "checkbox";
       cb.checked = isChecked;
@@ -815,43 +950,91 @@ I will now provide the screenshot. Extract and deliver the file per the rules ab
             return;
           }
           sitesSelected.add(s.id);
+          card.classList.add("selected");
         } else {
           sitesSelected.delete(s.id);
+          card.classList.remove("selected");
         }
-        openBtn.disabled = sitesSelected.size === 0;
+        updateSitesCounts();
       });
-      tdCheck.appendChild(cb);
-
-      const tdName = document.createElement("td");
-      tdName.textContent = s.name || s.url || s.id;
-
-      const tdDa = document.createElement("td");
-      tdDa.textContent = s.da != null ? String(s.da) : "-";
-
-      const tdSpam = document.createElement("td");
-      tdSpam.textContent = s.spamScore != null ? String(s.spamScore) : "-";
-
-      const tdCat = document.createElement("td");
-      tdCat.textContent = s.category || "-";
-
-      const tdFollow = document.createElement("td");
-      tdFollow.textContent = s.follow || "-";
-
-      tr.appendChild(tdCheck);
-      tr.appendChild(tdName);
-      tr.appendChild(tdDa);
-      tr.appendChild(tdSpam);
-      tr.appendChild(tdCat);
-      tr.appendChild(tdFollow);
-      body.appendChild(tr);
+      checkboxWrapper.appendChild(cb);
+      
+      // Card content
+      const info = document.createElement("div");
+      info.className = "siteCardInfo";
+      
+      const name = document.createElement("div");
+      name.className = "siteCardName";
+      name.textContent = s.name || s.url || s.id;
+      info.appendChild(name);
+      
+      const url = document.createElement("div");
+      url.className = "siteCardUrl";
+      url.textContent = s.url || "-";
+      info.appendChild(url);
+      
+      const meta = document.createElement("div");
+      meta.className = "siteCardMeta";
+      
+      // DA Badge
+      if (s.da != null) {
+        const daBadge = document.createElement("span");
+        daBadge.className = "siteCardBadge da";
+        daBadge.textContent = `DA: ${s.da}`;
+        meta.appendChild(daBadge);
+      }
+      
+      // Spam Score Badge
+      if (s.spamScore != null) {
+        const spamBadge = document.createElement("span");
+        spamBadge.className = "siteCardBadge spam";
+        spamBadge.textContent = `Spam: ${s.spamScore}`;
+        meta.appendChild(spamBadge);
+      }
+      
+      // Category Badge
+      if (s.category) {
+        const catBadge = document.createElement("span");
+        catBadge.className = "siteCardBadge category";
+        catBadge.textContent = s.category;
+        meta.appendChild(catBadge);
+      }
+      
+      // Follow Badge
+      if (s.follow) {
+        const followBadge = document.createElement("span");
+        followBadge.className = `siteCardBadge follow ${s.follow}`;
+        followBadge.textContent = s.follow.charAt(0).toUpperCase() + s.follow.slice(1);
+        meta.appendChild(followBadge);
+      }
+      
+      info.appendChild(meta);
+      
+      // Header with checkbox and info
+      const header = document.createElement("div");
+      header.className = "siteCardHeader";
+      header.appendChild(checkboxWrapper);
+      header.appendChild(info);
+      
+      card.appendChild(header);
+      
+      // Click card to toggle checkbox
+      card.addEventListener("click", (e) => {
+        if (e.target !== cb && e.target !== card) {
+          cb.click();
+        }
+      });
+      
+      body.appendChild(card);
     });
 
-    openBtn.disabled = sitesSelected.size === 0;
+    updateSitesCounts();
   }
 
   async function initSitesOpener() {
     const { sites } = await getSiteCatalog();
     sitesCatalog = Array.isArray(sites) ? sites : [];
+    console.log(`[HF] Loaded ${sitesCatalog.length} sites from catalog`);
     renderSitesFilters();
     applySitesFilters();
 
@@ -860,6 +1043,33 @@ I will now provide the screenshot. Extract and deliver the file per the rules ab
       if (!el) return;
       const evt = id === "sitesSearch" ? "input" : "change";
       el.addEventListener(evt, () => applySitesFilters());
+    });
+
+    // Select All Filtered
+    document.getElementById("sitesSelectAll")?.addEventListener("click", () => {
+      const maxSelect = 50;
+      let added = 0;
+      sitesFiltered.forEach((s) => {
+        if (sitesSelected.size >= maxSelect) return;
+        if (!sitesSelected.has(s.id)) {
+          sitesSelected.add(s.id);
+          added++;
+        }
+      });
+      if (added > 0) {
+        renderSitesTable();
+        toast(`Selected ${added} sites`, "success");
+      } else {
+        toast("All filtered sites already selected", "info");
+      }
+    });
+
+    // Clear All
+    document.getElementById("sitesClearAll")?.addEventListener("click", () => {
+      const count = sitesSelected.size;
+      sitesSelected.clear();
+      renderSitesTable();
+      toast(`Cleared ${count} selections`, "info");
     });
 
     document.getElementById("sitesOpenSelected")?.addEventListener("click", () => {

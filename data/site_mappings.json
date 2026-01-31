@@ -1,3 +1,5 @@
+
+
 {
   "_comment": "HyperFill Site Mappings — Is site/page pe extension uske hisaab se fill karega. Naye sites add karne ke liye 'sites' array mein entry banao.",
   "_profileKeys": "firstname, lastname, fullname, username, email, busEmail, email2, password, password2, phone, address, city, state, postcode, country, location, website, facebook, instagram, twitter, linkedin, youtube, title, company, category, subcategory, description",
@@ -82,7 +84,10 @@
       "pathPattern": "/login/",
       "category": "Web 2.0 Submission",
       "spamScore": 1.0,
-      "mappings": {}
+      "mappings": {
+        "email": "#UserLogin_username",
+        "password": "#UserLogin_password"
+      }
     },
     {
       "id": "admin-shopper-com-settings-page",
@@ -91,7 +96,9 @@
       "pathPattern": "/settings",
       "category": "Social Profile Submission",
       "spamScore": 1.0,
-      "mappings": {}
+      "mappings": {
+       
+      }
     },
     {
       "id": "adpost-com-login-login",
@@ -100,7 +107,9 @@
       "pathPattern": "/login",
       "category": "Classifieds Submission",
       "spamScore": 4.0,
-      "mappings": {}
+      "mappings": {
+        "email": "#user_login"
+      }
     },
     {
       "id": "amsterdamsmartcity-com-profile-details-page",
@@ -204,7 +213,7 @@
       "category": "Article Submission",
       "spamScore": 4.0,
       "mappings": {
-        "username": "#form-identifier-5pVIia"
+        "email": "#form-identifier-3rotrT"
       }
     },
     {
@@ -214,7 +223,12 @@
       "pathPattern": "/signup",
       "category": "Article Submission",
       "spamScore": 4.0,
-      "mappings": {}
+      "mappings": {
+        "email": "#form-identifier-J4rzhT",
+        "firstname": "#form-firstName-J4rzhT",
+        "lastname": "#form-lastName-J4rzhT",
+        "password": "#form-password-J4rzhT"
+      }
     },
     {
       "id": "apsense-com-account-settings-page",
@@ -292,7 +306,9 @@
       "pathPattern": "/sign",
       "category": "Web 2.0 Submission",
       "spamScore": 3.0,
-      "mappings": {}
+      "mappings": {
+        "email": "#user_login"
+      }
     },
     {
       "id": "bitsdujour-com-pc-download-signup",
@@ -392,7 +408,10 @@
       "pathPattern": "/user/login",
       "category": "Local Listing Submission",
       "spamScore": 1.0,
-      "mappings": {}
+      "mappings": {
+        "email": "#user_name",
+        "password": "#password"
+      }
     },
     {
       "id": "codeberg-org-user-settings-page",
@@ -569,7 +588,10 @@
       "pathPattern": "/scripts/posting/poststep1.epl",
       "category": "Classifieds Submission",
       "spamScore": 5.0,
-      "mappings": {}
+      "mappings": {
+        "email": "#username",
+        "password": "#password"
+      }
     },
     {
       "id": "fashonation-com-login-login",
@@ -647,10 +669,13 @@
       "id": "getsocialpr-com-login",
       "name": "getsocialpr.com — Login",
       "urlPattern": "getsocialpr.com",
-      "pathPattern": "/",
+      "pathPattern": "/#loginModal",
       "category": "Social Bookmarking Submission",
       "spamScore": 2.0,
-      "mappings": {}
+      "mappings": {
+        "email": "input[name=\"login-subject\"]",
+        "password": "#password"
+      }
     },
     {
       "id": "gifyu-com-login-login",
@@ -659,7 +684,9 @@
       "pathPattern": "/login",
       "category": "Image Submission",
       "spamScore": 8.0,
-      "mappings": {}
+      "mappings": {
+    "email": "input[name=\"login-subject\"]"
+  }
     },
     {
       "id": "github-com-login-login",
@@ -668,7 +695,9 @@
       "pathPattern": "/login",
       "category": "Image Submission",
       "spamScore": 1.0,
-      "mappings": {}
+      "mappings": {
+        "email": "#login_field"
+      }
     },
     {
       "id": "gitlab-innive-com-profile-page",
@@ -752,7 +781,10 @@
       "pathPattern": "/login",
       "category": "Image Submission",
       "spamScore": 1.0,
-      "mappings": {}
+      "mappings": {
+        "email": "#login-subject",
+        "password": "#login-password"
+      }
     },
     {
       "id": "inkbunny-net-createuser-php-signup",
@@ -779,7 +811,10 @@
       "pathPattern": "/login",
       "category": "Document Sharing Submission",
       "spamScore": 10.0,
-      "mappings": {}
+      "mappings": {
+    "email": "#user_email",
+    "password": "#password"
+  }
     },
     {
       "id": "khadas-com-profile-gminternationalfreightforwarde98819-profile-page",
@@ -806,7 +841,10 @@
       "pathPattern": "/account/login",
       "category": "Image Submission",
       "spamScore": 8.0,
-      "mappings": {}
+      "mappings": {
+        "email": "#UserName",
+        "password": "#Password"
+      }
     },
     {
       "id": "kwork-com-login",
@@ -997,7 +1035,9 @@
       "pathPattern": "/classifieds/login.html",
       "category": "Classifieds Submission",
       "spamScore": 5.0,
-      "mappings": {}
+      "mappings": {
+        "email": "#user_mail"
+      }
     },
     {
       "id": "muamat-com-classifieds-register-html-signup",
@@ -1006,7 +1046,8 @@
       "pathPattern": "/classifieds/register.html",
       "category": "Classifieds Submission",
       "spamScore": 5.0,
-      "mappings": {}
+      "mappings": {"username": "input[name='nickname']"
+}
     },
     {
       "id": "my-pbworks-com-login",
@@ -1015,7 +1056,10 @@
       "pathPattern": "/",
       "category": "Web 2.0 Submission",
       "spamScore": 1.0,
-      "mappings": {}
+      "mappings": {
+        "email": "#f_u_email",
+        "password": "#f_u_password"
+      }
     },
     {
       "id": "mydramalist-com-signin-login",
@@ -1106,7 +1150,11 @@
       "category": "Article Submission",
       "spamScore": 5,
       "mappings": {
-       
+        "fullname": "input[name='realname']",
+        "username": "input[name='username']",
+        "email": "input[name='email']",
+        "description": "textarea[name='bio']",
+        "password": "input[name='password']"
       }
     },
     {
@@ -1117,7 +1165,7 @@
       "category": "Article Submission",
       "spamScore": 10.0,
       "mappings": {
-        "firstname": "form#signin_form #log_username",
+        "username": "form#signin_form #log_username",
         "password": "form#signin_form #log_password"
       },
       "submit": "#signin-button"
@@ -1138,7 +1186,11 @@
       "pathPattern": "/login",
       "category": "Image Submission",
       "spamScore": 4.0,
-      "mappings": {}
+      "mappings": {
+        "email": "input[name=\"login-subject\"]",
+        "password": "input[name=\"password\"]"
+      }
+    
     },
     {
       "id": "pixabay-com-signup",
@@ -1231,10 +1283,14 @@
       "id": "reddit-com-login",
       "name": "reddit.com — Login",
       "urlPattern": "reddit.com",
-      "pathPattern": "/",
+      "pathPattern": "/login",
       "category": "Social Bookmarking Submission",
       "spamScore": 3.0,
-      "mappings": {}
+      "mappings": {
+        "username": "input[name='username'][autocomplete='username']",
+"password": "input[type='password'][name='password'][autocomplete='current-password']"
+
+      }
     },
     {
       "id": "robertsspaceindustries-com-en-login",
@@ -1308,7 +1364,10 @@
       "pathPattern": "/login",
       "category": "Document Sharing Submission",
       "spamScore": 1.0,
-      "mappings": {}
+      "mappings": {
+        "username": "#name",
+        "password": "#password"
+      }
     },
     {
       "id": "slideshare-net-login-email-login",
@@ -1317,7 +1376,10 @@
       "pathPattern": "/login/email",
       "category": "Document Sharing Submission",
       "spamScore": 3.0,
-      "mappings": {}
+      "mappings": {
+        "email": "#user_login",
+        "password": "#user_password"
+      }
     },
     {
       "id": "sociomix-com-register-login",
@@ -1473,7 +1535,10 @@
       "pathPattern": "/s/login",
       "category": "Web 2.0 Submission",
       "spamScore": 1.0,
-      "mappings": {}
+      "mappings": {
+        "email": "#user_login",
+        "password": "#user_password"
+      }
     },
     {
       "id": "stylevore-com-login",
@@ -1568,20 +1633,19 @@
       "category": "Article Submission",
       "spamScore": 5,
       "mappings": {
-        "email": "input[name=\"data[User][username]\"]",
-        "password": "input[name=\"data[User][password]\"]",
-        "country": "#country-code-selector",
-        "phone": "input[name=\"data[User][phone]\"]"
+        "email": "input[name=\"username\"]",
+        "password": "input[name=\"password\"]"
       }
     },
     {
       "id": "tripoto-com-signup",
       "name": "tripoto.com — Signup",
       "urlPattern": "tripoto.com",
-      "pathPattern": "/",
+      "pathPattern": "",
       "category": "Social Bookmarking Submission",
       "spamScore": 1.0,
       "mappings": {
+        "fullname":"name='data[User][full_name]'",
         "email": "input[name=\"data[User][username]\"]",
         "password": "input[name=\"data[User][password]\"]",
         "country": "#country-code-selector",
@@ -1613,7 +1677,22 @@
       "pathPattern": "/registration/",
       "category": "Local Listing Submission",
       "spamScore": 10.0,
-      "mappings": {}
+      "mappings": {
+        
+      }
+    },
+    {
+      "id": "weeblyblog-com-register-login",
+      "name": "weeblyblog.com — login",
+      "urlPattern": "weeblyblog.com",
+      "pathPattern": "/login/",
+      "category": "Article Submission",
+      "spamScore": 7.0,
+      "mappings": {
+        "email": "#username-329",
+        "password": "#user_password-329"
+        
+      }
     },
     {
       "id": "weeblyblog-com-register-signup",
@@ -1622,7 +1701,7 @@
       "pathPattern": "/register/",
       "category": "Article Submission",
       "spamScore": 7.0,
-      "mappings": {}
+      "mappings": {"email": "#user_email-328"}
     },
     {
       "id": "wipplay-com-en-gb-login-login",
@@ -1690,7 +1769,10 @@
       "pathPattern": "/",
       "category": "Local Listing Submission",
       "spamScore": 1.0,
-      "mappings": {}
+      "mappings": {
+        "email": "#userid",
+        "password": "#password"
+      }
     },
     {
       "id": "zupyak-signup",

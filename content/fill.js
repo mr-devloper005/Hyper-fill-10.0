@@ -4288,7 +4288,7 @@
       lastname: last,
       fullname,
       username: p.username || "",
-      email: p.email || p.submissionEmail || "",
+      email: p.submissionEmail || p.email || "",
       busEmail: p.businessEmail || p.workEmail || "",
       password,
       phone: p.phone || p.number || p.phoneNumber || "",
@@ -4416,7 +4416,8 @@
   }
 
   // ------- Fill logic -------
-  function tryFill(el, role, vals, force, parts, idx) {
+  // fromMapping: when true, role came from site_mappings (user explicitly mapped) — skip strict role guards for username
+  function tryFill(el, role, vals, force, parts, idx, fromMapping) {
     if (!el) return { ok: false, why: "no-el" };
 
     // Rich editors for description/about/bio/story
@@ -4470,29 +4471,25 @@
     if (role === "website" && !looksLikeURL(v)) return { ok: false, why: "value-not-url" };
 
     if (role === "username") {
-      const sig = usernameSignalsUltra(parts, el);
-
-      const hasDirectToken =
-        /\b(user\s*name|username|login|userid|user_login|uname)\b/i
-          .test([parts.label, parts.name, parts.id, parts.fcn, parts.rfcn, parts.datatest, parts.datatestid, parts.dataname].join(" "));
-
-      const explicit =
-        EXACT_HINTS[parts.name] === "username" || EXACT_HINTS[parts.id] === "username" ||
-        EXACT_HINTS[parts.wrapperName] === "username" || EXACT_HINTS[parts.fcn] === "username" ||
-        EXACT_HINTS[parts.rfcn] === "username" || EXACT_HINTS[parts.datatest] === "username" ||
-        EXACT_HINTS[parts.datatestid] === "username" || EXACT_HINTS[parts.dataname] === "username";
-
-      // hard guards (common non-username fields)
-      if (isExplicitNonUsername(parts)) return { ok:false, why:"explicit-non-username-field" };
-
       // "Email or Username" fields: allow either (looksLikeUser OR looksLikeEmail)
       if (!looksLikeUser(v) && !looksLikeEmail(v)) return { ok:false, why:"value-not-username" };
-      if (["email","password","tel","url","number"].includes(type)) return { ok:false, why:"bad-input-type" };
 
-      // must have a direct token or explicit hint; container 'around' is NOT considered
-      if (!(hasDirectToken || explicit || sig >= 2)) return { ok:false, why:"insufficient-direct-username-signal" };
-
-      if (NEG.social.some((rx) => rx.test(parts.combined))) return { ok:false, why:"social-context" };
+      // When role comes from site_mappings, user explicitly chose this field — skip strict element checks
+      if (!fromMapping) {
+        const sig = usernameSignalsUltra(parts, el);
+        const hasDirectToken =
+          /\b(user\s*name|username|login|userid|user_login|uname)\b/i
+            .test([parts.label, parts.name, parts.id, parts.fcn, parts.rfcn, parts.datatest, parts.datatestid, parts.dataname].join(" "));
+        const explicit =
+          EXACT_HINTS[parts.name] === "username" || EXACT_HINTS[parts.id] === "username" ||
+          EXACT_HINTS[parts.wrapperName] === "username" || EXACT_HINTS[parts.fcn] === "username" ||
+          EXACT_HINTS[parts.rfcn] === "username" || EXACT_HINTS[parts.datatest] === "username" ||
+          EXACT_HINTS[parts.datatestid] === "username" || EXACT_HINTS[parts.dataname] === "username";
+        if (isExplicitNonUsername(parts)) return { ok:false, why:"explicit-non-username-field" };
+        if (["email","password","tel","url","number"].includes(type)) return { ok:false, why:"bad-input-type" };
+        if (!(hasDirectToken || explicit || sig >= 2)) return { ok:false, why:"insufficient-direct-username-signal" };
+        if (NEG.social.some((rx) => rx.test(parts.combined))) return { ok:false, why:"social-context" };
+      }
     }
 
     if (role === "postcode") {
@@ -4569,7 +4566,7 @@
         if (!el || !isVisible(el)) continue;
         if (!force && alreadyFilled(el)) continue;
         const parts = ctx(el);
-        const res = tryFill(el, role, vals, force, parts, 0);
+        const res = tryFill(el, role, vals, force, parts, 0, true);
         if (res?.ok) filled++;
       }
       DEBUG && log(`[site-mapping] filled=${filled} from ${Object.keys(mappings).length} mappings` + (formSel ? " (form:" + formSel + ")" : ""));

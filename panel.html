@@ -146,6 +146,18 @@
           0 0 45px rgba(255,255,255,.14);
         animation: titleFloat 4.8s ease-in-out infinite;
       }
+
+
+      .siteCard {
+  height: 220px; /* Adjusted height */
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+  box-shadow: 0 8px 24px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.1);
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+
+
       @keyframes titleFloat{
         0%,100%{ transform: translateY(0); }
         50%{ transform: translateY(-2px); }
@@ -427,7 +439,7 @@
       .dualRange input[type="range"]{
         position:absolute; left:0; right:0; top:0; bottom:0;
         width:100%;
-        -webkit-appearance:none;
+        /* -webkit-appearance:none; */
         background: transparent;
         pointer-events:none; /* allow overlap */
       }
@@ -449,55 +461,192 @@
       /* ======= Sites cards (cells) ======= */
       .sitesBar{
         display:flex; justify-content:space-between; align-items:center;
-        gap:10px; flex-wrap:wrap;
+        gap:16px; flex-wrap:wrap; margin-bottom:16px;
+      }
+      .sitesBarLeft{
+        display:flex; align-items:center; gap:16px; flex-wrap:wrap; flex:1;
+      }
+      .sitesBarActions{
+        display:flex; gap:8px; flex-wrap:wrap;
       }
       .miniText{ font-size:11px; color: rgba(255,255,255,.65); font-weight:800; }
       .pillBtn{
-        display:inline-flex; align-items:center; gap:10px;
-        padding:10px 12px;
+        display:inline-flex; align-items:center; gap:8px;
+        padding:10px 16px;
         border-radius:999px;
         border:1px solid rgba(255,255,255,.16);
-        background: rgba(255,255,255,.06);
+        background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
         color: rgba(255,255,255,.92);
         font-weight:900;
+        font-size:12px;
         cursor:pointer;
-        transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease, opacity .14s ease;
+        transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease, opacity .14s ease, background .14s ease;
       }
       .pillBtn:disabled{ opacity:.45; cursor:not-allowed; }
-      .pillBtn:hover:not(:disabled){ border-color: rgba(255,255,255,.28); box-shadow: 0 0 14px rgba(255,255,255,.10); transform: translateY(-1px); }
+      .pillBtn:hover:not(:disabled){ 
+        border-color: rgba(255,255,255,.32); 
+        box-shadow: 0 0 20px rgba(255,255,255,.12), 0 4px 12px rgba(0,0,0,.3); 
+        transform: translateY(-1px);
+        background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      }
       .pillBtn:active:not(:disabled){ transform: scale(var(--haptic)); }
+      .pillBtnSmall{
+        display:inline-flex; align-items:center; gap:6px;
+        padding:6px 12px;
+        border-radius:999px;
+        border:1px solid rgba(255,255,255,.14);
+        background: rgba(255,255,255,.05);
+        color: rgba(255,255,255,.85);
+        font-weight:800;
+        font-size:11px;
+        cursor:pointer;
+        transition: all .14s ease;
+      }
+      .pillBtnSmall:hover{ 
+        border-color: rgba(255,255,255,.24); 
+        background: rgba(255,255,255,.08);
+        box-shadow: 0 0 12px rgba(255,255,255,.08);
+        transform: translateY(-1px);
+      }
+      .pillBtnSmall:active{ transform: scale(.96); }
 
       .sitesList{
         display:grid;
-        grid-template-columns:1fr;
-        gap:10px;
-        max-height:310px;
-        overflow:auto;
-        padding-right:4px;
+        grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));
+        gap:14px;
+        max-height:600px;
+        overflow-y:auto;
+        overflow-x:hidden;
+        padding:4px 4px 4px 0;
       }
-      .sitesList::-webkit-scrollbar{ width:8px; }
-      .sitesList::-webkit-scrollbar-thumb{ background: rgba(255,255,255,.12); border-radius:999px; }
-      .sitesList::-webkit-scrollbar-track{ background: rgba(255,255,255,.05); border-radius:999px; }
+      .sitesList::-webkit-scrollbar{ width:10px; }
+      .sitesList::-webkit-scrollbar-thumb{ 
+        background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.12)); 
+        border-radius:999px;
+        border:2px solid transparent;
+        background-clip:padding-box;
+      }
+      .sitesList::-webkit-scrollbar-thumb:hover{ background: linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,.18)); }
+      .sitesList::-webkit-scrollbar-track{ background: rgba(255,255,255,.04); border-radius:999px; }
 
-      .siteCell{
-        display:flex; gap:10px; align-items:center;
-        padding:10px 12px;
-        border-radius:16px;
+      .siteCard{
+        position:relative;
+        display:flex; flex-direction:column; gap:12px;
+        padding:16px;
+        border-radius:18px;
         border:1px solid rgba(255,255,255,.12);
-        background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-        box-shadow: 0 16px 36px rgba(0,0,0,.55);
-        transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
-        animation: cellIn .35s ease both;
+        background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+        box-shadow: 0 8px 24px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.1);
+        transition: all .2s ease;
+        animation: cardIn .4s ease both;
+        cursor:pointer;
       }
-      @keyframes cellIn{
-        from{ opacity:0; transform: translateY(6px); }
-        to{ opacity:1; transform: translateY(0); }
+      @keyframes cardIn{
+        from{ opacity:0; transform: translateY(8px) scale(.98); }
+        to{ opacity:1; transform: translateY(0) scale(1); }
       }
-      .siteCell:hover{
-        border-color: rgba(255,255,255,.26);
-        box-shadow: 0 0 18px rgba(255,255,255,.08), 0 18px 44px rgba(0,0,0,.65);
-        transform: translateY(-1px);
+      .siteCard:hover{
+        border-color: rgba(255,255,255,.24);
+        box-shadow: 0 12px 32px rgba(0,0,0,.5), 0 0 24px rgba(255,255,255,.08), inset 0 1px 0 rgba(255,255,255,.15);
+        transform: translateY(-2px);
       }
+      .siteCard.selected{
+        border-color: rgba(125,211,252,.4);
+        background: linear-gradient(180deg, rgba(125,211,252,.12), rgba(125,211,252,.06));
+        box-shadow: 0 8px 24px rgba(125,211,252,.2), inset 0 1px 0 rgba(255,255,255,.15);
+      }
+      .siteCardHeader{
+        display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      }
+      .siteCardCheckbox{
+        position:relative;
+        width:22px; height:22px;
+        flex-shrink:0;
+        margin-top:2px;
+      }
+      .siteCardCheckbox input[type="checkbox"]{
+        width:100%; height:100%;
+        margin:0;
+        cursor:pointer;
+        appearance:none;
+        -webkit-appearance:none;
+        border:2px solid rgba(255,255,255,.3);
+        border-radius:6px;
+        background: rgba(255,255,255,.05);
+        transition: all .2s ease;
+        position:relative;
+      }
+      .siteCardCheckbox input[type="checkbox"]:hover{
+        border-color: rgba(255,255,255,.5);
+        background: rgba(255,255,255,.1);
+        box-shadow: 0 0 12px rgba(255,255,255,.15);
+      }
+      .siteCardCheckbox input[type="checkbox"]:checked{
+        border-color: #7dd3fc;
+        background: linear-gradient(135deg, #7dd3fc, #38bdf8);
+        box-shadow: 0 0 16px rgba(125,211,252,.4);
+      }
+      .siteCardCheckbox input[type="checkbox"]:checked::after{
+        content:'✓';
+        position:absolute;
+        top:50%; left:50%;
+        transform:translate(-50%, -50%);
+        color:#02040a;
+        font-weight:900;
+        font-size:14px;
+        line-height:1;
+      }
+      .siteCardInfo{
+        flex:1; min-width:0;
+      }
+      .siteCardName{
+        font-size:14px; font-weight:800;
+        color: rgba(255,255,255,.95);
+        margin-bottom:6px;
+        word-break:break-word;
+        line-height:1.3;
+      }
+      .siteCardUrl{
+        font-size:11px; font-weight:600;
+        color: rgba(255,255,255,.5);
+        word-break:break-all;
+        margin-bottom:10px;
+      }
+      .siteCardMeta{
+        display:flex; align-items:center; gap:12px;
+        flex-wrap:wrap;
+      }
+      .siteCardBadge{
+        display:inline-flex; align-items:center; gap:4px;
+        padding:4px 10px;
+        border-radius:12px;
+        font-size:10px; font-weight:800;
+        background: rgba(255,255,255,.08);
+        border:1px solid rgba(255,255,255,.12);
+        color: rgba(255,255,255,.85);
+      }
+      .siteCardBadge.da{
+        background: linear-gradient(135deg, rgba(125,211,252,.2), rgba(125,211,252,.1));
+        border-color: rgba(125,211,252,.3);
+        color: #7dd3fc;
+      }
+      .siteCardBadge.spam{
+        background: linear-gradient(135deg, rgba(251,113,133,.2), rgba(251,113,133,.1));
+        border-color: rgba(251,113,133,.3);
+        color: #fb7185;
+      }
+      .siteCardBadge.category{
+        background: rgba(192,132,252,.15);
+        border-color: rgba(192,132,252,.25);
+        color: #c084fc;
+      }
+      .siteCardBadge.follow{
+        background: rgba(255,255,255,.1);
+        border-color: rgba(255,255,255,.2);
+      }
+      .siteCardBadge.follow.dofollow{ color: #7dd3fc; }
+      .siteCardBadge.follow.nofollow{ color: #fb7185; }
+      .siteCardBadge.follow.mixed{ color: #fbbf24; }
       .siteCheck input{ accent-color:#fff; width:16px; height:16px; }
       .siteMeta{ flex:1; min-width:0; }
       .siteName{
@@ -755,6 +904,12 @@
                 <label>Category (checkbox)</label>
                 <div id="sitesCategoryChips" class="chipGrid">
                   <!-- JS can populate here (optional). If JS still expects #sitesCategory select, we keep hidden select below -->
+
+                  <label for="sitesCategoryTask">Category & Task</label>
+<select id="sitesCategoryTask" class="input">
+    <!-- Dynamically populated options from categories and tasks -->
+</select>
+
                 </div>
                 <select id="sitesCategory" class="input" style="display:none;">
                   <option value="">All</option>
@@ -798,22 +953,44 @@
                   <input id="sitesDaMax" type="range" min="0" max="100" value="100" />
                 </div>
               </div>
+
+              <div class="rangeTop">
+                <div class="rangeLabel">DA Range</div>
+                <div class="rangeVal">
+                  <span id="daMinVal">10</span> — <span id="daMaxVal">100</span>
+                </div>
+              </div>
+              <div class="dualRange">
+                <input id="sitesDaMin" type="range" min="0" max="100" value="10" />
+                <input id="sitesDaMax" type="range" min="0" max="100" value="100" />
+              </div>
+              
             </div>
           </div>
 
           <div class="section" style="grid-column:1/-1;">
             <div class="sitesBar">
-              <span class="miniText">
-                <span id="sitesCount">0</span> sites (max 50 select)
-              </span>
+              <div class="sitesBarLeft">
+                <span class="miniText">
+                  <span id="sitesCount">0</span> sites found | <span id="sitesSelectedCount">0</span> selected (max 50)
+                </span>
+                <div class="sitesBarActions">
+                  <button id="sitesSelectAll" class="pillBtnSmall">
+                    <span class="dot"></span> Select All Filtered
+                  </button>
+                  <button id="sitesClearAll" class="pillBtnSmall">
+                    <span class="dot"></span> Clear All
+                  </button>
+                </div>
+              </div>
               <button id="sitesOpenSelected" class="pillBtn" disabled>
-                <span class="dot"></span> Open selected
+                <span class="dot"></span> Open Selected (<span id="sitesOpenCount">0</span>)
               </button>
             </div>
 
-            <!-- Premium cards container (JS can still render into #sitesTableBody) -->
+            <!-- Premium cards container -->
             <div class="sitesList" id="sitesTableBody">
-              <!-- panel.js: inject rows/cards here -->
+              <!-- panel.js: inject premium cards here -->
             </div>
           </div>
 
