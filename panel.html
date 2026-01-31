@@ -148,16 +148,6 @@
       }
 
 
-      .siteCard {
-  height: 220px; /* Adjusted height */
-  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-  box-shadow: 0 8px 24px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.1);
-  transition: all .2s ease;
-  cursor: pointer;
-}
-
-
-
       @keyframes titleFloat{
         0%,100%{ transform: translateY(0); }
         50%{ transform: translateY(-2px); }
@@ -412,7 +402,204 @@
       .fchip:hover{ border-color: rgba(255,255,255,.28); box-shadow: 0 0 14px rgba(255,255,255,.10); transform: translateY(-1px); }
       .fchip input{ accent-color:#fff; }
 
-      /* Dual range */
+      /* Multi-select dropdown (checkbox list) */
+      .msWrap{ display:flex; flex-wrap:wrap; gap:10px; }
+      .ms{ position:relative; flex:1; min-width: 220px; }
+      .msBtn{
+        width:100%;
+        display:flex; align-items:center; justify-content:space-between; gap:10px;
+        padding:12px 14px;
+        border-radius:14px;
+        background: rgba(0,0,0,.28);
+        border:1px solid rgba(255,255,255,.22);
+        color: rgba(255,255,255,.92);
+        font-weight:900;
+        cursor:pointer;
+        transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease, background .18s ease;
+        box-shadow:
+          0 0 0 1px rgba(255,255,255,.06),
+          0 0 18px rgba(255,255,255,.06) inset;
+      }
+      .msBtn:hover{ border-color: rgba(255,255,255,.35); box-shadow: 0 0 20px rgba(255,255,255,.12); transform: translateY(-1px); }
+      .msBtn:active{ transform: scale(var(--haptic)); }
+      .msBtn .msLabel{ display:flex; flex-direction:column; gap:2px; text-align:left; }
+      .msBtn .msTitle{ font-size:12px; letter-spacing:.25px; }
+      .msBtn .msValue{ font-size:11px; color: rgba(255,255,255,.62); font-weight:800; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width: 160px; }
+      .msBtn .msChevron{ opacity:.75; font-size:12px; }
+
+      .msMenu{
+        position:absolute;
+        left:0; right:0;
+        top: calc(100% + 8px);
+        z-index:50;
+        display:none;
+        border-radius:16px;
+        padding:10px;
+        background: rgba(5,7,12,.92);
+        border:1px solid rgba(255,255,255,.14);
+        backdrop-filter: blur(14px) saturate(1.3);
+        box-shadow: 0 22px 60px rgba(0,0,0,.65);
+        max-height: 260px;
+        overflow:auto;
+      }
+      .ms.open .msMenu{ display:block; }
+      .msMenu::-webkit-scrollbar{ width:10px; }
+      .msMenu::-webkit-scrollbar-thumb{ background: rgba(255,255,255,.16); border-radius:999px; border:2px solid transparent; background-clip:padding-box; }
+      .msMenu::-webkit-scrollbar-track{ background: rgba(255,255,255,.04); border-radius:999px; }
+
+      .msSearch{
+        width:100%;
+        padding:10px 12px;
+        border-radius:12px;
+        border:1px solid rgba(255,255,255,.14);
+        background: rgba(0,0,0,.22);
+        color: rgba(255,255,255,.9);
+        outline:none;
+        font-weight:800;
+        font-size:12px;
+        margin-bottom:8px;
+      }
+      .msItem{ display:flex; align-items:center; gap:10px; padding:8px 8px; border-radius:12px; cursor:pointer; }
+      .msItem:hover{ background: rgba(255,255,255,.06); }
+      .msItem input{ width:16px; height:16px; accent-color:#fff; }
+      .msItem span{ font-size:12px; font-weight:800; color: rgba(255,255,255,.86); }
+      .msFoot{ display:flex; gap:8px; padding-top:8px; border-top:1px solid rgba(255,255,255,.08); margin-top:8px; }
+      .msMiniBtn{
+        flex:1;
+        padding:9px 10px;
+        border-radius:12px;
+        border:1px solid rgba(255,255,255,.14);
+        background: rgba(255,255,255,.06);
+        color: rgba(255,255,255,.9);
+        font-weight:900;
+        font-size:12px;
+        cursor:pointer;
+        transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+      }
+      .msMiniBtn:hover{ border-color: rgba(255,255,255,.28); box-shadow: 0 0 14px rgba(255,255,255,.10); transform: translateY(-1px); }
+      .msMiniBtn:active{ transform: scale(var(--haptic)); }
+
+      
+/* Metric filter cards (DA / Spam) – redesigned (no pill chips, no round knobs) */
+.metricBox{
+  --metric:#4de1ff;
+  --metricSoft: rgba(77,225,255,.22);
+
+  border:1px solid rgba(255,255,255,.14);
+  background:
+    radial-gradient(520px 120px at 20% -20px, var(--metricSoft), transparent 62%),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border-radius: 18px;
+  padding:12px;
+  position:relative;
+  overflow:hidden;
+}
+.metricBox::after{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    radial-gradient(2px 2px at 12% 35%, rgba(255,255,255,.22), transparent 55%),
+    radial-gradient(2px 2px at 28% 72%, rgba(255,255,255,.16), transparent 55%),
+    radial-gradient(2px 2px at 68% 28%, rgba(255,255,255,.18), transparent 55%),
+    radial-gradient(1px 1px at 82% 62%, rgba(255,255,255,.18), transparent 55%);
+  opacity:.35;
+  pointer-events:none;
+}
+.metricBox > *{ position:relative; z-index:1; }
+.metricTop{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+.metricTitle{ font-size:12px; font-weight:1000; letter-spacing:.25px; color: rgba(255,255,255,.92); }
+.metricHint{ font-size:10px; font-weight:800; color: rgba(255,255,255,.58); margin-top:2px; }
+.metricVal{
+  font-size:12px;
+  font-weight:1000;
+  color: var(--metric);
+  text-shadow: 0 0 12px rgba(255,255,255,.10);
+  white-space:nowrap;
+}
+
+.metricBox.da{ --metric:#4de1ff; --metricSoft:rgba(77,225,255,.20); }
+.metricBox.spam{ --metric:#ff4d6d; --metricSoft:rgba(255,77,109,.18); }
+
+/* Presets – segmented blocks (not pills) */
+.metricPresets{
+  display:grid;
+  grid-template-columns: repeat(5, minmax(0,1fr));
+  gap:8px;
+  margin-top:10px;
+}
+/* Spam has 4 presets */
+.metricBox.spam .metricPresets{ grid-template-columns: repeat(4, minmax(0,1fr)); }
+
+.mPreset{
+  padding:9px 10px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.20);
+  color: rgba(255,255,255,.86);
+  font-weight:950;
+  font-size:11px;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease, background .14s ease;
+}
+.mPreset::before{
+  content:"";
+  position:absolute; left:10px; right:10px; top:0; height:2px;
+  background: linear-gradient(90deg, transparent, var(--metric), transparent);
+  opacity:.85;
+}
+.mPreset:hover{
+  border-color: rgba(255,255,255,.30);
+  box-shadow: 0 0 18px rgba(255,255,255,.10), 0 6px 16px rgba(0,0,0,.35);
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.06);
+}
+.mPreset:active{ transform: scale(var(--haptic)); }
+
+/* Range – “constellation track” with diamond handles */
+.metricBox .dualRange{ margin-top:10px; }
+.dualRange{
+  position:relative;
+  height:34px;
+  margin-top:10px;
+}
+.dualRange input[type="range"]{
+  position:absolute; left:0; right:0; top:0; bottom:0;
+  width:100%;
+  background: transparent;
+  pointer-events:none; /* allow overlap */
+}
+.dualRange input[type="range"]::-webkit-slider-runnable-track{
+  height:8px;
+  border-radius:999px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.18) 0px,
+      rgba(255,255,255,.18) 10px,
+      rgba(255,255,255,.08) 10px,
+      rgba(255,255,255,.08) 20px
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.10),
+    inset 0 0 18px rgba(0,0,0,.35);
+}
+.dualRange input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:14px; height:14px;
+  border-radius:4px;
+  background: var(--metric);
+  border:1px solid rgba(0,0,0,.40);
+  box-shadow:
+    0 0 18px rgba(255,255,255,.12),
+    0 10px 20px rgba(0,0,0,.45);
+  transform: rotate(45deg);
+  pointer-events:auto;
+  cursor:pointer;
+}
+
+/* Dual range */
       .rangeBox{
         border:1px solid rgba(255,255,255,.14);
         background: rgba(255,255,255,.04);
@@ -431,32 +618,7 @@
         color: rgba(255,255,255,.72);
         font-weight:900;
       }
-      .dualRange{
-        position:relative;
-        height:34px;
-        margin-top:10px;
-      }
-      .dualRange input[type="range"]{
-        position:absolute; left:0; right:0; top:0; bottom:0;
-        width:100%;
-        /* -webkit-appearance:none; */
-        background: transparent;
-        pointer-events:none; /* allow overlap */
-      }
-      .dualRange input[type="range"]::-webkit-slider-thumb{
-        -webkit-appearance:none;
-        width:16px; height:16px; border-radius:999px;
-        background:#fff;
-        border:1px solid rgba(0,0,0,.35);
-        box-shadow: 0 0 18px rgba(255,255,255,.25);
-        pointer-events:auto;
-        cursor:pointer;
-      }
-      .dualRange input[type="range"]::-webkit-slider-runnable-track{
-        height:6px; border-radius:999px;
-        background: rgba(255,255,255,.14);
-        box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
-      }
+
 
       /* ======= Sites cards (cells) ======= */
       .sitesBar{
@@ -512,8 +674,8 @@
 
       .sitesList{
         display:grid;
-        grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));
-        gap:14px;
+        grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+        gap:10px;
         max-height:600px;
         overflow-y:auto;
         overflow-x:hidden;
@@ -531,9 +693,9 @@
 
       .siteCard{
         position:relative;
-        display:flex; flex-direction:column; gap:12px;
-        padding:16px;
-        border-radius:18px;
+        display:flex; flex-direction:column; gap:8px;
+        padding:12px;
+        border-radius:16px;
         border:1px solid rgba(255,255,255,.12);
         background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
         box-shadow: 0 8px 24px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.1);
@@ -600,17 +762,17 @@
         flex:1; min-width:0;
       }
       .siteCardName{
-        font-size:14px; font-weight:800;
+        font-size:13px; font-weight:900;
         color: rgba(255,255,255,.95);
-        margin-bottom:6px;
+        margin-bottom:4px;
         word-break:break-word;
         line-height:1.3;
       }
       .siteCardUrl{
-        font-size:11px; font-weight:600;
+        font-size:10px; font-weight:700;
         color: rgba(255,255,255,.5);
         word-break:break-all;
-        margin-bottom:10px;
+        margin-bottom:6px;
       }
       .siteCardMeta{
         display:flex; align-items:center; gap:12px;
@@ -639,6 +801,16 @@
         background: rgba(192,132,252,.15);
         border-color: rgba(192,132,252,.25);
         color: #c084fc;
+      }
+      .siteCardBadge.task{
+        background: rgba(125,211,252,.12);
+        border-color: rgba(125,211,252,.22);
+        color: rgba(255,255,255,.9);
+      }
+      .siteCardBadge.country{
+        background: rgba(255,255,255,.06);
+        border-color: rgba(255,255,255,.14);
+        color: rgba(255,255,255,.85);
       }
       .siteCardBadge.follow{
         background: rgba(255,255,255,.1);
@@ -899,29 +1071,72 @@
                 <input id="sitesSearch" class="input" placeholder="Type site name or URL..." />
               </div>
 
-              <!-- Checkbox chips (no dropdown) -->
+              <!-- Multi-select dropdowns (checkbox list) -->
               <div class="field">
-                <label>Category (checkbox)</label>
-                <div id="sitesCategoryChips" class="chipGrid">
-                  <!-- JS can populate here (optional). If JS still expects #sitesCategory select, we keep hidden select below -->
+                <label>Filter by Category, Task & Country</label>
 
-                  <label for="sitesCategoryTask">Category & Task</label>
-<select id="sitesCategoryTask" class="input">
-    <!-- Dynamically populated options from categories and tasks -->
-</select>
+                <div class="msWrap">
+                  <!-- Category -->
+                  <div class="ms" id="msCategory">
+                    <button type="button" class="msBtn" id="sitesCategoryMSBtn">
+                      <span class="msLabel">
+                        <span class="msTitle">Category</span>
+                        <span class="msValue" id="sitesCategoryMSVal">All</span>
+                      </span>
+                      <span class="msChevron">▾</span>
+                    </button>
+                    <div class="msMenu">
+                      <input class="msSearch" id="sitesCategorySearch" placeholder="Search category..." />
+                      <div id="sitesCategoryItems"></div>
+                      <div class="msFoot">
+                        <button type="button" class="msMiniBtn" id="sitesCategoryClear">Clear</button>
+                        <button type="button" class="msMiniBtn" id="sitesCategoryAll">Select All</button>
+                      </div>
+                    </div>
+                  </div>
 
+                  <!-- Task -->
+                  <div class="ms" id="msTask">
+                    <button type="button" class="msBtn" id="sitesTaskMSBtn">
+                      <span class="msLabel">
+                        <span class="msTitle">Task Type</span>
+                        <span class="msValue" id="sitesTaskMSVal">All</span>
+                      </span>
+                      <span class="msChevron">▾</span>
+                    </button>
+                    <div class="msMenu">
+                      <input class="msSearch" id="sitesTaskSearch" placeholder="Search task..." />
+                      <div id="sitesTaskItems"></div>
+                      <div class="msFoot">
+                        <button type="button" class="msMiniBtn" id="sitesTaskClear">Clear</button>
+                        <button type="button" class="msMiniBtn" id="sitesTaskAll">Select All</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Country -->
+                  <div class="ms" id="msCountry">
+                    <button type="button" class="msBtn" id="sitesCountryMSBtn">
+                      <span class="msLabel">
+                        <span class="msTitle">Country</span>
+                        <span class="msValue" id="sitesCountryMSVal">All</span>
+                      </span>
+                      <span class="msChevron">▾</span>
+                    </button>
+                    <div class="msMenu">
+                      <input class="msSearch" id="sitesCountrySearch" placeholder="Search country..." />
+                      <div id="sitesCountryItems"></div>
+                      <div class="msFoot">
+                        <button type="button" class="msMiniBtn" id="sitesCountryClear">Clear</button>
+                        <button type="button" class="msMiniBtn" id="sitesCountryAll">Select All</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <select id="sitesCategory" class="input" style="display:none;">
-                  <option value="">All</option>
-                </select>
-              </div>
 
-              <div class="field">
-                <label>Task (checkbox)</label>
-                <div id="sitesTaskChips" class="chipGrid"></div>
-                <select id="sitesTask" class="input" style="display:none;">
-                  <option value="">All</option>
-                </select>
+                <!-- Keep hidden selects for backward compatibility (panel.js no longer uses these) -->
+                <select id="sitesCategory" class="input" style="display:none;"><option value="">All</option></select>
+                <select id="sitesTask" class="input" style="display:none;"><option value="">All</option></select>
               </div>
 
               <div class="field">
@@ -940,29 +1155,47 @@
                 </select>
               </div>
 
-              <!-- Real moving range (dual slider) -->
-              <div class="rangeBox">
-                <div class="rangeTop">
-                  <div class="rangeLabel">DA Range</div>
-                  <div class="rangeVal"><span id="daMinVal">10</span> — <span id="daMaxVal">100</span></div>
+              <!-- DA filter (unique UI: presets + dual slider) -->
+              <div class="metricBox da">
+                <div class="metricTop">
+                  <div>
+                    <div class="metricTitle">DA (Domain Authority)</div>
+                    <div class="metricHint">Quick presets or drag range</div>
+                  </div>
+                  <div class="metricVal"><span id="daMinVal">10</span> — <span id="daMaxVal">100</span></div>
                 </div>
-
+                <div class="metricPresets" id="daPresets">
+                  <button type="button" class="mPreset" data-min="0" data-max="20">0–20</button>
+                  <button type="button" class="mPreset" data-min="21" data-max="40">21–40</button>
+                  <button type="button" class="mPreset" data-min="41" data-max="60">41–60</button>
+                  <button type="button" class="mPreset" data-min="61" data-max="80">61–80</button>
+                  <button type="button" class="mPreset" data-min="81" data-max="100">81–100</button>
+                </div>
                 <div class="dualRange">
-                  <!-- keep original ids for JS compatibility -->
                   <input id="sitesDaMin" type="range" min="0" max="100" value="10" />
                   <input id="sitesDaMax" type="range" min="0" max="100" value="100" />
                 </div>
               </div>
 
-              <div class="rangeTop">
-                <div class="rangeLabel">DA Range</div>
-                <div class="rangeVal">
-                  <span id="daMinVal">10</span> — <span id="daMaxVal">100</span>
+              <!-- Spam score filter (red themed) -->
+              <div class="metricBox spam">
+                <div class="metricTop">
+                  <div>
+                    <div class="metricTitle">Spam Score</div>
+                    <div class="metricHint">Lower is better (filter range)</div>
+                  </div>
+                  <div class="metricVal"><span id="spamMinVal">0</span> — <span id="spamMaxVal">100</span></div>
                 </div>
-              </div>
-              <div class="dualRange">
-                <input id="sitesDaMin" type="range" min="0" max="100" value="10" />
-                <input id="sitesDaMax" type="range" min="0" max="100" value="100" />
+                <div class="metricPresets" id="spamPresets">
+                  <button type="button" class="mPreset" data-min="0" data-max="5">0–5</button>
+                  <button type="button" class="mPreset" data-min="6" data-max="15">6–15</button>
+                  <button type="button" class="mPreset" data-min="16" data-max="30">16–30</button>
+                  <button type="button" class="mPreset" data-min="31" data-max="100">31+</button>
+                </div>
+                <div class="dualRange">
+                  <input id="sitesSpamMin" type="range" min="0" max="100" value="0" />
+                  <input id="sitesSpamMax" type="range" min="0" max="100" value="100" />
+                </div>
               </div>
               
             </div>
@@ -1022,44 +1255,6 @@
         <span id="toastMsg">Done.</span>
       </div>
     </div>
-
-    <!-- Small UI helpers (does not change your core logic) -->
-    <script>
-      // Dual range clamp + value UI (keeps ids same)
-      (function(){
-        const minEl = document.getElementById('sitesDaMin');
-        const maxEl = document.getElementById('sitesDaMax');
-        const minVal = document.getElementById('daMinVal');
-        const maxVal = document.getElementById('daMaxVal');
-        if(!minEl || !maxEl) return;
-
-        function sync(){
-          let a = parseInt(minEl.value||'0',10);
-          let b = parseInt(maxEl.value||'0',10);
-          if(a > b){ [a,b] = [b,a]; }
-          // keep elements in bounds visually
-          minVal.textContent = a;
-          maxVal.textContent = b;
-        }
-        minEl.addEventListener('input', sync);
-        maxEl.addEventListener('input', sync);
-        sync();
-      })();
-
-      // Tab visual active state (ids same)
-      (function(){
-        const tabFill = document.getElementById('tabFill');
-        const tabSites = document.getElementById('tabSites');
-        if(!tabFill || !tabSites) return;
-
-        function setActive(which){
-          tabFill.classList.toggle('active', which === 'fill');
-          tabSites.classList.toggle('active', which === 'sites');
-        }
-        tabFill.addEventListener('click', ()=>setActive('fill'));
-        tabSites.addEventListener('click', ()=>setActive('sites'));
-      })();
-    </script>
 
     <script src="panel.js"></script>
   </body>
